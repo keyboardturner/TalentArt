@@ -10,7 +10,9 @@ I've had this idea in my head for almost a year, but it wasn't until recently I 
 To do list:
 
 Possibly create better backgrounds for the PvP talent frame. Only a few notable specs differentiate from each other (fire, frost, arcane for example).
+
 ~~Fix the Hunter Pet Spec Artwork.~~
+
 ~~Build compatibility with ElvUI, Aurora, and other Skin-like addons. Again, not enough lua knowledge yet, but I already have an idea.~~
 
 Icons are from [Flat Player Icons](http://www.wowinterface.com/downloads/info24101-FlatPlayerIcons.html). They are only a part of the screenshots but don't come with my addon.
