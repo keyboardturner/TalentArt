@@ -15,6 +15,8 @@ if LOCALE == "enUS" then
 	-- uses the US English locale code.
 	L["Name"] = "TalentArt"
 	L["DropdownButtonText"] = "Talent Frame Art"
+	L["CurrentConfig"] = "Current Loadout: "
+	L["NoConfig"] = "None / Starter Build"
 return end
 
 if LOCALE == "esES" or LOCALE == "esMX" then -- official translation (thanks to twitter @RomanValoppi )
