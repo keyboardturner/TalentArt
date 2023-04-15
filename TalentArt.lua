@@ -195,17 +195,25 @@ function talentArt.resetBackground()
 	local class, classIndex = UnitClassBase("player")
 	for k, v in pairs(defaultTextures[class]) do
 		if k == GetSpecialization() then
-			ClassTalentFrame.TalentsTab.Background:SetAtlas(defaultTextures[class][k])
-			ClassTalentFrame.TalentsTab.OverlayBackgroundRight:SetAtlas(defaultTextures[class][k])
-			ClassTalentFrame.TalentsTab.BackgroundFlash:SetAtlas(defaultTextures[class][k])
-			ClassTalentFrame.TalentsTab.OverlayBackgroundMid:SetAtlas(defaultTextures[class][k])
 
 			TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())] = nil
 
 			TalentArtPanel.Preview.tex:SetAtlas(defaultTextures[class][k])
+
+			if ClassTalentFrame == nil then
+				return
+
+			else
+				ClassTalentFrame.TalentsTab.Background:SetAtlas(defaultTextures[class][k])
+				ClassTalentFrame.TalentsTab.OverlayBackgroundRight:SetAtlas(defaultTextures[class][k])
+				ClassTalentFrame.TalentsTab.BackgroundFlash:SetAtlas(defaultTextures[class][k])
+				ClassTalentFrame.TalentsTab.OverlayBackgroundMid:SetAtlas(defaultTextures[class][k])
+
+			end
 		end
 	end
 end
+
 
 SLASH_talentart1 = "/talentart";
 SlashCmdList["talentart"] = function()
@@ -222,14 +230,17 @@ talentArt.Events:SetScript("OnEvent", talentArt.login)
 EventRegistry:RegisterCallback('TalentFrame.TalentTab.Show', talentArt.doStuff)
 EventRegistry:RegisterCallback('TalentFrame.OpenFrame', talentArt.doStuff)
 
+
 TalentArtPanel.menu = {
+
 	{ text = "Select an Option", isTitle = true},
-	{ text = "Option 1",
+	{ text = "Tester",
 		func = function()
 			TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())] = talentTextures.backgroundTester
 			TalentArtPanel.Preview.tex:SetTexture(talentTextures.backgroundTester.background)
 		end
 	},
+
 	{ text = "Default",
 		func = function()
 			TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())] = talentTextures.backgroundTester
@@ -268,7 +279,13 @@ TalentArtPanel.menuFrame = CreateFrame("Frame", "TalentArtMenuFrame", TalentArtP
 TalentArtPanel.ArtButton = CreateFrame("Button", "TalentArtMenuArtButton", TalentArtPanel, "GameMenuButtonTemplate")
 TalentArtPanel.ArtButton:SetPoint("TOPLEFT", 0, -50);
 --TalentArtPanel.ArtButton:SetSize(99, 81);
-TalentArtPanel.ArtButton:SetScript("OnClick", function() EasyMenu(TalentArtPanel.menu, TalentArtPanel.menuFrame, "TalentArtMenuArtButton", 0 , 0, "MENU", 10) end)
+TalentArtPanel.ArtButton:SetScript("OnClick", function()
+	if C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID()) == nil then 
+		print("You have no loadout selected! Remember to instead use a nil replacer dummy!")
+		return
+	end
+	EasyMenu(TalentArtPanel.menu, TalentArtPanel.menuFrame, "TalentArtMenuArtButton", 0 , 0, "MENU", 10)
+end)
 
 
 
