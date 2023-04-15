@@ -1,9 +1,9 @@
 ## Title: TalentArt
-## Version: 0.0.1
+## Version: 0.1.0
 ## Author: Keyboardturner
-## Interface: 70200
-## Notes: Adds artwork to the talent frames.
-## LoadOnDemand: 1
-## LoadWith: Blizzard_TalentUI
+## Interface: 100007
+## Notes: Allows changing the talent frame artwork.
+## SavedVariablesPerCharacter: TalentArt_DB
 
 TalentArt.lua
+Localization.lua
