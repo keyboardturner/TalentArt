@@ -525,35 +525,11 @@ L.talentTextures = {
 
 	
 	Artifact = {
-		DeathKnightBlood = {
-			background = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\DeathKnightBlood.blp",
-			right = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\DeathKnightBlood.blp",
-			flash = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\DeathKnightBlood.blp",
-			mid = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\DeathKnightBlood.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
-		},
-		DeathKnightFrost = {
-			background = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\DeathKnightFrost.blp",
-			right = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\DeathKnightFrost.blp",
-			flash = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\DeathKnightFrost.blp",
-			mid = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\DeathKnightFrost.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
-		},
-		DeathKnightUnholy = {
-			background = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\DeathKnightUnholy.blp",
-			right = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\DeathKnightUnholy.blp",
-			flash = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\DeathKnightUnholy.blp",
-			mid = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\DeathKnightUnholy.blp",
+		DeathKnight = {
+			background = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\DeathKnight.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\DeathKnight.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\DeathKnight.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\DeathKnight.blp",
 			colorImg = {
 				r = 1, g = 1, b = 1, a = 1,
 			},
@@ -601,35 +577,11 @@ L.talentTextures = {
 			},
 		},
 
-		MageArcane = {
-			background = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\MageArcane.blp",
-			right = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\MageArcane.blp",
-			flash = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\MageArcane.blp",
-			mid = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\MageArcane.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
-		},
-		MageFire = {
-			background = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\MageFire.blp",
-			right = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\MageFire.blp",
-			flash = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\MageFire.blp",
-			mid = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\MageFire.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
-		},
-		MageFrost = {
-			background = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\MageFrost.blp",
-			right = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\MageFrost.blp",
-			flash = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\MageFrost.blp",
-			mid = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\MageFrost.blp",
+		Mage = {
+			background = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Mage.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Mage.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Mage.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Mage.blp",
 			colorImg = {
 				r = 1, g = 1, b = 1, a = 1,
 			},
@@ -677,10 +629,10 @@ L.talentTextures = {
 			},
 		},
 		PriestShadow = {
-			background = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\PriestShadow.blp",
-			right = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\PriestShadow.blp",
-			flash = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\PriestShadow.blp",
-			mid = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\PriestShadow.blp",
+			background = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Priest_Shadow.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Priest_Shadow.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Priest_Shadow.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Priest_Shadow.blp",
 			colorImg = {
 				r = 1, g = 1, b = 1, a = 1,
 			},
@@ -778,6 +730,19 @@ L.talentTextures = {
 			right = "Interface\\AddOns\\TalentArt\\Media\\Website\\Druid.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Website\\Druid.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Website\\Druid.blp",
+			colorImg = {
+				r = 1, g = 1, b = 1, a = 1,
+			},
+			colorBG = {
+				r = 1, g = 1, b = 1,
+			},
+		},
+
+		Evoker = {
+			background = "Interface\\AddOns\\TalentArt\\Media\\Website\\Evoker.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\Website\\Evoker.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\Website\\Evoker.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\Website\\Evoker.blp",
 			colorImg = {
 				r = 1, g = 1, b = 1, a = 1,
 			},

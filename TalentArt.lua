@@ -635,42 +635,16 @@ TalentArtPanel.menu = {
 
 	{ text = "Artifact Traits", notCheckable = true, hasArrow = true,
 		menuList = {
-			{ text = "Death Knight", notCheckable = true, hasArrow = true,
-				menuList = {
-					{ text = "Blood", notCheckable = false, hasArrow = false,
-						func = function()
+			{ text = "Death Knight", notCheckable = false, hasArrow = false,
+				func = function()
 							if talentArt.specChecker() ~= false then
-								TalentArt_DB[talentArt.specChecker(specID)] = L.talentTextures.Artifact.DeathKnightBlood
-								TalentArtPanel.Preview.tex:SetTexture(L.talentTextures.Artifact.DeathKnightBlood.background)
+								TalentArt_DB[talentArt.specChecker(specID)] = L.talentTextures.Artifact.DeathKnight
+								TalentArtPanel.Preview.tex:SetTexture(L.talentTextures.Artifact.DeathKnight.background)
 								return
 							end
-							TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())] = L.talentTextures.Artifact.DeathKnightBlood
-							TalentArtPanel.Preview.tex:SetTexture(L.talentTextures.Artifact.DeathKnightBlood.background)
-						end
-					},
-					{ text = "Frost", notCheckable = false, hasArrow = false,
-						func = function()
-							if talentArt.specChecker() ~= false then
-								TalentArt_DB[talentArt.specChecker(specID)] = L.talentTextures.Artifact.DeathKnightFrost
-								TalentArtPanel.Preview.tex:SetTexture(L.talentTextures.Artifact.DeathKnightFrost.background)
-								return
-							end
-							TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())] = L.talentTextures.Artifact.DeathKnightFrost
-							TalentArtPanel.Preview.tex:SetTexture(L.talentTextures.Artifact.DeathKnightFrost.background)
-						end
-					},
-					{ text = "Unholy", notCheckable = false, hasArrow = false,
-						func = function()
-							if talentArt.specChecker() ~= false then
-								TalentArt_DB[talentArt.specChecker(specID)] = L.talentTextures.Artifact.DeathKnightUnholy
-								TalentArtPanel.Preview.tex:SetTexture(L.talentTextures.Artifact.DeathKnightUnholy.background)
-								return
-							end
-							TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())] = L.talentTextures.Artifact.DeathKnightUnholy
-							TalentArtPanel.Preview.tex:SetTexture(L.talentTextures.Artifact.DeathKnightUnholy.background)
-						end
-					},
-				},
+					TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())] = L.talentTextures.Artifact.DeathKnight
+					TalentArtPanel.Preview.tex:SetTexture(L.talentTextures.Artifact.DeathKnight.background)
+				end
 			},
 			{ text = "Demon Hunter", notCheckable = false, hasArrow = false,
 				func = function()
@@ -705,42 +679,16 @@ TalentArtPanel.menu = {
 					TalentArtPanel.Preview.tex:SetTexture(L.talentTextures.Artifact.Hunter.background)
 				end
 			},
-			{ text = "Mage", notCheckable = true, hasArrow = true,
-				menuList = {
-					{ text = "Arcane", notCheckable = false, hasArrow = false,
-						func = function()
+			{ text = "Mage", notCheckable = false, hasArrow = false,
+				func = function()
 							if talentArt.specChecker() ~= false then
-								TalentArt_DB[talentArt.specChecker(specID)] = L.talentTextures.Artifact.MageArcane
-								TalentArtPanel.Preview.tex:SetTexture(L.talentTextures.Artifact.MageArcane.background)
+								TalentArt_DB[talentArt.specChecker(specID)] = L.talentTextures.Artifact.Mage
+								TalentArtPanel.Preview.tex:SetTexture(L.talentTextures.Artifact.Mage.background)
 								return
 							end
-							TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())] = L.talentTextures.Artifact.MageArcane
-							TalentArtPanel.Preview.tex:SetTexture(L.talentTextures.Artifact.MageArcane.background)
-						end
-					},
-					{ text = "Fire", notCheckable = false, hasArrow = false,
-						func = function()
-							if talentArt.specChecker() ~= false then
-								TalentArt_DB[talentArt.specChecker(specID)] = L.talentTextures.Artifact.MageFire
-								TalentArtPanel.Preview.tex:SetTexture(L.talentTextures.Artifact.MageFire.background)
-								return
-							end
-							TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())] = L.talentTextures.Artifact.MageFire
-							TalentArtPanel.Preview.tex:SetTexture(L.talentTextures.Artifact.MageFire.background)
-						end
-					},
-					{ text = "Frost", notCheckable = false, hasArrow = false,
-						func = function()
-							if talentArt.specChecker() ~= false then
-								TalentArt_DB[talentArt.specChecker(specID)] = L.talentTextures.Artifact.MageFrost
-								TalentArtPanel.Preview.tex:SetTexture(L.talentTextures.Artifact.MageFrost.background)
-								return
-							end
-							TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())] = L.talentTextures.Artifact.MageFrost
-							TalentArtPanel.Preview.tex:SetTexture(L.talentTextures.Artifact.MageFrost.background)
-						end
-					},
-				},
+					TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())] = L.talentTextures.Artifact.Mage
+					TalentArtPanel.Preview.tex:SetTexture(L.talentTextures.Artifact.Mage.background)
+				end
 			},
 			{ text = "Monk", notCheckable = false, hasArrow = false,
 				func = function()
@@ -764,31 +712,27 @@ TalentArtPanel.menu = {
 					TalentArtPanel.Preview.tex:SetTexture(L.talentTextures.Artifact.Paladin.background)
 				end
 			},
-			{ text = "Priest", notCheckable = true, hasArrow = true,
-				menuList = {
-					{ text = "Light", notCheckable = false, hasArrow = false,
-						func = function()
-							if talentArt.specChecker() ~= false then
-								TalentArt_DB[talentArt.specChecker(specID)] = L.talentTextures.Artifact.Priest
-								TalentArtPanel.Preview.tex:SetTexture(L.talentTextures.Artifact.Priest.background)
-								return
-							end
-							TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())] = L.talentTextures.Artifact.Priest
-							TalentArtPanel.Preview.tex:SetTexture(L.talentTextures.Artifact.Priest.background)
-						end
-					},
-					{ text = "Shadow", notCheckable = false, hasArrow = false,
-						func = function()
-							if talentArt.specChecker() ~= false then
-								TalentArt_DB[talentArt.specChecker(specID)] = L.talentTextures.Artifact.PriestShadow
-								TalentArtPanel.Preview.tex:SetTexture(L.talentTextures.Artifact.PriestShadow.background)
-								return
-							end
-							TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())] = L.talentTextures.Artifact.PriestShadow
-							TalentArtPanel.Preview.tex:SetTexture(L.talentTextures.Artifact.PriestShadow.background)
-						end
-					},
-				},
+			{ text = "Priest", notCheckable = false, hasArrow = false,
+				func = function()
+					if talentArt.specChecker() ~= false then
+						TalentArt_DB[talentArt.specChecker(specID)] = L.talentTextures.Artifact.Priest
+						TalentArtPanel.Preview.tex:SetTexture(L.talentTextures.Artifact.Priest.background)
+						return
+					end
+					TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())] = L.talentTextures.Artifact.Priest
+					TalentArtPanel.Preview.tex:SetTexture(L.talentTextures.Artifact.Priest.background)
+				end
+			},
+			{ text = "Priest Shadow", notCheckable = false, hasArrow = false,
+				func = function()
+					if talentArt.specChecker() ~= false then
+						TalentArt_DB[talentArt.specChecker(specID)] = L.talentTextures.Artifact.PriestShadow
+						TalentArtPanel.Preview.tex:SetTexture(L.talentTextures.Artifact.PriestShadow.background)
+						return
+					end
+					TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())] = L.talentTextures.Artifact.PriestShadow
+					TalentArtPanel.Preview.tex:SetTexture(L.talentTextures.Artifact.PriestShadow.background)
+				end
 			},
 			{ text = "Rogue", notCheckable = false, hasArrow = false,
 				func = function()
@@ -871,6 +815,17 @@ TalentArtPanel.menu = {
 					end
 					TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())] = L.talentTextures.Website.Druid
 					TalentArtPanel.Preview.tex:SetTexture(L.talentTextures.Website.Druid.background)
+				end
+			},
+			{ text = "Evoker", notCheckable = false, hasArrow = false,
+				func = function()
+					if talentArt.specChecker() ~= false then
+						TalentArt_DB[talentArt.specChecker(specID)] = L.talentTextures.Website.Evoker
+						TalentArtPanel.Preview.tex:SetTexture(L.talentTextures.Website.Evoker.background)
+						return
+					end
+					TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())] = L.talentTextures.Website.Evoker
+					TalentArtPanel.Preview.tex:SetTexture(L.talentTextures.Website.Evoker.background)
 				end
 			},
 			{ text = "Hunter", notCheckable = false, hasArrow = false,
