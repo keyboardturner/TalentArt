@@ -19,7 +19,7 @@ if LOCALE == "enUS" then
 	L["NoConfig"] = "None / Starter Build"
 return end
 
-if LOCALE == "esES" or LOCALE == "esMX" then -- official translation (thanks to twitter @RomanValoppi )
+if LOCALE == "esES" or LOCALE == "esMX" then --
 	-- Spanish translations go here
 
 return end
@@ -29,7 +29,7 @@ if LOCALE == "deDE" then
 
 return end
 
-if LOCALE == "frFR" then -- official translation (thanks to twitter @Solanya_ )
+if LOCALE == "frFR" then --
 	-- French translations go here
 
 return end
@@ -57,12 +57,12 @@ if LOCALE == "koKR" then
 
 return end
 
-if LOCALE == "zhCN" then -- official translation (thanks to github @EKE00372)
+if LOCALE == "zhCN" then --
 	-- Simplified Chinese translations go here
 
 return end
 
-if LOCALE == "zhTW" then -- official translation (thanks to github @EKE00372)
+if LOCALE == "zhTW" then --
 	-- Traditional Chinese translations go here
 
 return end
