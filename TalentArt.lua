@@ -25,10 +25,12 @@ TalentArtPanel.Preview.tex = TalentArtPanel.Preview:CreateTexture()
 TalentArtPanel.Preview.tex:SetAllPoints(TalentArtPanel.Preview)
 TalentArtPanel.Preview.tex:SetTexture(L.talentTextures.backgroundTester.background)
 TalentArtPanel.Preview.tex:SetScript("OnShow", function()
-	if C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID()) == nil then
+	if C_Traits.GetConfigInfo(C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())) == nil then
 		TalentArtPanel.specName:SetText(L["CurrentConfig"] .. L["NoConfig"] )
 	else
-		TalentArtPanel.specName:SetText(L["CurrentConfig"] .. C_Traits.GetConfigInfo(C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())).name )
+		if C_Traits.GetConfigInfo(C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())).name ~= nil then
+			TalentArtPanel.specName:SetText(L["CurrentConfig"] .. C_Traits.GetConfigInfo(C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())).name )
+		end
 	end
 	if (TalentArt_DB == nil) or (TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())] == nil) then
 		local class, classIndex = UnitClassBase("player")
