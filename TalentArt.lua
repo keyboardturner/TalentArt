@@ -105,8 +105,7 @@ function talentArt.doStuff()
 		return
 	end
 	local specID = GetSpecializationInfo(GetSpecialization())
-	local bingus = C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())
-
+	
 	--print("DEBUG talent build ID: " .. (bingus or "nil"))
 	--print(L.talentTextures[backgroundTester][texture])
 
