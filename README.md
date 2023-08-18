@@ -18,3 +18,6 @@ Re-build compatibility with ElvUI, Aurora, and other Skin-like addons.
 [This is a screenshot album of some of the older addon](http://imgur.com/a/0KAUJ)
 
 Thank you so much to everyone who supported me while making this addon! I've spent almost ~~20+~~ many hours working on this between the artwork and making sure everything was right. Beyond that, I'm going to lose track.
+
+
+A link to my discord for addon projects and other things can be found [here](https://discord.gg/tA4rrmjPp8).
