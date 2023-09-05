@@ -1,9 +1,9 @@
-## Interface: 100105
 ## Title: TalentArt
-## Notes: Allows changing the talent frame artwork.
-## IconTexture: Interface/Icons/Inv_7xp_inscription_talenttome02.blp
-## Author: Keyboardturner
 ## Version: 0.1.1
+## Author: Keyboardturner
+## Interface: 100107
+## IconTexture: Interface/Icons/Inv_7xp_inscription_talenttome02.blp
+## Notes: Allows changing the talent frame artwork.
 ## SavedVariablesPerCharacter: TalentArt_DB
 
 Assets.lua
