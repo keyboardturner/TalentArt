@@ -1,5 +1,5 @@
 ## Title: TalentArt
-## Version: 0.1.1
+## Version: 0.1.2
 ## Author: Keyboardturner
 ## Interface: 100107
 ## IconTexture: Interface/Icons/Inv_7xp_inscription_talenttome02.blp
