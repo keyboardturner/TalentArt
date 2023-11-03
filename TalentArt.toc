@@ -1,10 +1,13 @@
 ## Title: TalentArt
-## Version: 0.1.2
+## Version: @project-version@
 ## Author: Keyboardturner
-## Interface: 100107
+## Interface: 100200
 ## IconTexture: Interface/Icons/Inv_7xp_inscription_talenttome02.blp
 ## Notes: Allows changing the talent frame artwork.
 ## SavedVariablesPerCharacter: TalentArt_DB
+## X-Curse-Project-ID: 102667
+## X-WoWI-ID: 24380
+## X-Wago-ID: aNDmm86o
 
 Assets.lua
 TalentArt.lua
