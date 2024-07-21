@@ -1,7 +1,7 @@
 ## Title: TalentArt
 ## Version: @project-version@
 ## Author: Keyboardturner
-## Interface: 100207
+## Interface: 100207, 110000, 110002
 ## IconTexture: Interface/Icons/Inv_7xp_inscription_talenttome02.blp
 ## Notes: Allows changing the talent frame artwork.
 ## SavedVariablesPerCharacter: TalentArt_DB
