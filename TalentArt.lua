@@ -541,12 +541,12 @@ Dropdown:SetupMenu(function(dropdown, rootDescription)
 				if talentArt.specChecker() ~= false then
 					TalentArt_DB[talentArt.specChecker(specID)] = bingle
 					TalentArtPanel.Preview.tex:SetTexture(bingleBackground)
-					return
+				else
+					TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())] = bingle
+					TalentArtPanel.Preview.tex:SetTexture(bingleBackground)
 				end
-				TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())] = bingle
-				TalentArtPanel.Preview.tex:SetTexture(bingleBackground)
 
-				talentArt.doStuff()
+				talentArt.eventDelay()
 			end)
 		end
 	end
@@ -560,12 +560,12 @@ Dropdown:SetupMenu(function(dropdown, rootDescription)
 			if talentArt.specChecker() ~= false then
 				TalentArt_DB[talentArt.specChecker(specID)] = bingle
 				TalentArtPanel.Preview.tex:SetTexture(bingleBackground)
-				return
+			else
+				TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())] = bingle
+				TalentArtPanel.Preview.tex:SetTexture(bingleBackground)
 			end
-			TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())] = bingle
-			TalentArtPanel.Preview.tex:SetTexture(bingleBackground)
 
-			talentArt.doStuff()
+			talentArt.eventDelay()
 		end)
 	end
 
@@ -578,12 +578,40 @@ Dropdown:SetupMenu(function(dropdown, rootDescription)
 			if talentArt.specChecker() ~= false then
 				TalentArt_DB[talentArt.specChecker(specID)] = bingle
 				TalentArtPanel.Preview.tex:SetTexture(bingleBackground)
-				return
+			else
+				TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())] = bingle
+				TalentArtPanel.Preview.tex:SetTexture(bingleBackground)
 			end
-			TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())] = bingle
-			TalentArtPanel.Preview.tex:SetTexture(bingleBackground)
 
-			talentArt.doStuff()
+			talentArt.eventDelay()
 		end)
 	end
 end)
+
+
+function talentArt.TalentFrameEventFrame()
+	if UnitAffectingCombat("player") ~= true and WipeBarsConfirm_DB.Talent == true then
+		Dropdown:ClearAllPoints()
+		Dropdown:SetParent(PlayerSpellsFrame.TalentsFrame)
+		Dropdown:Show()
+		Dropdown:SetPoint("BOTTOM", PlayerSpellsFrame.TalentsFrame.LoadSystem.Dropdown, "TOP", 0, 2.5)
+		Dropdown:SetSize(200,25)
+	else
+		return
+	end
+end
+
+function talentArt.SettingsPanelEventFrame()
+	if UnitAffectingCombat("player") ~= true and WipeBarsConfirm_DB.Editmode == true then
+		Dropdown:ClearAllPoints()
+		Dropdown:SetParent(TalentArtPanel)
+		Dropdown:Show()
+		Dropdown:SetPoint("TOPLEFT", TalentArtPanel, "TOPLEFT", 0, -50);
+		Dropdown:SetSize(150,30)
+	else
+		return
+	end
+end
+
+EventRegistry:RegisterCallback('PlayerSpellsFrame.TalentTab.Show', talentArt.TalentFrameEventFrame)
+EventRegistry:RegisterCallback('Settings.CategoryChanged', talentArt.SettingsPanelEventFrame)
