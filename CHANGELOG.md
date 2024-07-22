@@ -1,3 +1,7 @@
+# 0.1.7
+
+TOC updates for TWW, complete menu code rewrite including much more efficient refactoring, new menu dropdown button placed on the talent frame
+
 # 0.1.6
 
 toc bump to 10.2.7
