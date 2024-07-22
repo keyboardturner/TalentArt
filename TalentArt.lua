@@ -483,38 +483,42 @@ local TableOStuff = {
 				classFile = "Druid",
 			},
 			[4] = {
+				className = "Evoker",
+				classFile = "Evoker",
+			},
+			[5] = {
 				className = "Hunter",
 				classFile = "Hunter",
 			},
-			[5] = {
+			[6] = {
 				className = "Mage",
 				classFile = "Mage",
 			},
-			[6] = {
+			[7] = {
 				className = "Monk",
 				classFile = "Monk",
 			},
-			[7] = {
+			[8] = {
 				className = "Paladin",
 				classFile = "Paladin",
 			},
-			[8] = {
+			[9] = {
 				className = "Priest",
 				classFile = "Priest",
 			},
-			[9] = {
+			[10] = {
 				className = "Rogue",
 				classFile = "Rogue",
 			},
-			[10] = {
+			[11] = {
 				className = "Shaman",
 				classFile = "Shaman",
 			},
-			[11] = {
+			[12] = {
 				className = "Warlock",
 				classFile = "Warlock",
 			},
-			[12] = {
+			[13] = {
 				className = "Warrior",
 				classFile = "Warrior",
 			},
