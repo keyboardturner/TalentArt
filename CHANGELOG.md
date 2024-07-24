@@ -1,3 +1,7 @@
+# 0.1.8
+
+Quick fix to properly place new dropdown menu on talent frame.
+
 # 0.1.7
 
 TOC updates for TWW, complete menu code rewrite including much more efficient refactoring, new menu dropdown button placed on the talent frame

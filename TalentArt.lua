@@ -594,7 +594,7 @@ end)
 
 
 function talentArt.TalentFrameEventFrame()
-	if UnitAffectingCombat("player") ~= true and WipeBarsConfirm_DB.Talent == true then
+	if UnitAffectingCombat("player") ~= true then
 		Dropdown:ClearAllPoints()
 		Dropdown:SetParent(PlayerSpellsFrame.TalentsFrame)
 		Dropdown:Show()
@@ -606,7 +606,7 @@ function talentArt.TalentFrameEventFrame()
 end
 
 function talentArt.SettingsPanelEventFrame()
-	if UnitAffectingCombat("player") ~= true and WipeBarsConfirm_DB.Editmode == true then
+	if UnitAffectingCombat("player") ~= true then
 		Dropdown:ClearAllPoints()
 		Dropdown:SetParent(TalentArtPanel)
 		Dropdown:Show()
