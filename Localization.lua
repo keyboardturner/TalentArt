@@ -58,11 +58,15 @@ if LOCALE == "koKR" then
 return end
 
 if LOCALE == "zhCN" then --
-	-- Simplified Chinese translations go here
-
+	L["Name"] = "TalentArt"
+	L["DropdownButtonText"] = "天赋界面背景"
+	L["CurrentConfig"] = "目前使用："
+	L["NoConfig"] = "无 / 默认"
 return end
 
 if LOCALE == "zhTW" then --
-	-- Traditional Chinese translations go here
-
+	L["Name"] = "TalentArt"
+	L["DropdownButtonText"] = "天賦介面背景"
+	L["CurrentConfig"] = "目前使用："
+	L["NoConfig"] = "無 / 預設"
 return end
