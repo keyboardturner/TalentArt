@@ -35,7 +35,7 @@ if LOCALE == "frFR" then --
 return end
 
 if LOCALE == "itIT" then
-	-- French translations go here
+	-- Italian translations go here
 
 return end
 
