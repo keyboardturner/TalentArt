@@ -1,3 +1,7 @@
+# 0.1.9
+
+Updates to zhTW/zhCN
+
 # 0.1.8
 
 Quick fix to properly place new dropdown menu on talent frame.
