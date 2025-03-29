@@ -524,6 +524,109 @@ local TableOStuff = {
 			},
 		},
 	},
+	
+	[4] = {
+		ThemeName = "Legion Artifacts & Mounts",
+		ThemeFile = "LegionMountsArtifacts",
+		Data = {
+			[1] = {
+				className = "Affliction Warlock",
+				classFile = "AffWarlock",
+			},
+			[2] = {
+				className = "Arcane Mage",
+				classFile = "ArcMage",
+			},
+			[3] = {
+				className = "Brewmaster Monk",
+				classFile = "BrewMonk",
+			},
+			[4] = {
+				className = "Havoc Demon Hunter",
+				classFile = "DH",
+			},
+			[5] = {
+				className = "Demon Hunter Mount",
+				classFile = "DHMount",
+			},
+			[6] = {
+				className = "Discipline Priest",
+				classFile = "DiscPriest",
+			},
+			[7] = {
+				className = "Unholy Death Knight",
+				classFile = "UnholyDK",
+			},
+			[8] = {
+				className = "Druid Mount",
+				classFile = "DruidMount",
+			},
+			[9] = {
+				className = "Holy Paladin",
+				classFile = "HolyPaladin",
+			},
+			[10] = {
+				className = "Hunter Mount",
+				classFile = "HunterMount",
+			},
+			[11] = {
+				className = "Mage Mount",
+				classFile = "MageMount",
+			},
+			[12] = {
+				className = "Marksmanship Hunter",
+				classFile = "MMHunter",
+			},
+			[13] = {
+				className = "Marksmanship Hunter 2",
+				classFile = "MMHunter2",
+			},
+			[14] = {
+				className = "Monk Mount",
+				classFile = "MonkMount",
+			},
+			[15] = {
+				className = "Outlaw Rogue",
+				classFile = "OutlawRogue",
+			},
+			[16] = {
+				className = "Paladin Mount",
+				classFile = "PaladinMount",
+			},
+			[17] = {
+				className = "Priest Mount",
+				classFile = "PriestMount",
+			},
+			[18] = {
+				className = "Restoration Druid",
+				classFile = "RestoDruid",
+			},
+			[19] = {
+				className = "Restoration Shaman",
+				classFile = "RestoSham",
+			},
+			[20] = {
+				className = "Rogue Mount",
+				classFile = "RogueMount",
+			},
+			[21] = {
+				className = "Shaman Mount",
+				classFile = "ShamMount",
+			},
+			[22] = {
+				className = "Warlock Mount",
+				classFile = "WarlockMount",
+			},
+			[23] = {
+				className = "Arms Warrior",
+				classFile = "Warrior1",
+			},
+			[24] = {
+				className = "Warrior Mount",
+				classFile = "WarrMount",
+			},
+		},
+	},
 };
 
 --New 11.0.0 Menu API change
@@ -590,6 +693,25 @@ Dropdown:SetupMenu(function(dropdown, rootDescription)
 			talentArt.eventDelay()
 		end)
 	end
+
+	--Legion Artifacts & Mounts
+	local elementDescription = rootDescription:CreateButton(TableOStuff[4]["ThemeName"])
+	for k, v in ipairs(TableOStuff[4]["Data"]) do
+		local submenumenu = elementDescription:CreateButton(TableOStuff[4]["Data"][k]["className"], function()
+			local bingle = L.talentTextures[TableOStuff[4]["ThemeFile"]][TableOStuff[4]["Data"][k]["classFile"]]
+			local bingleBackground = L.talentTextures[TableOStuff[4]["ThemeFile"]][TableOStuff[4]["Data"][k]["classFile"]]["background"]
+			if talentArt.specChecker() ~= false then
+				TalentArt_DB[talentArt.specChecker(specID)] = bingle
+				TalentArtPanel.Preview.tex:SetTexture(bingleBackground)
+			else
+				TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())] = bingle
+				TalentArtPanel.Preview.tex:SetTexture(bingleBackground)
+			end
+
+			talentArt.eventDelay()
+		end)
+	end
+	
 end)
 
 

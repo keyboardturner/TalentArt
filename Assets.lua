@@ -870,6 +870,334 @@ L.talentTextures = {
 	},
 
 
+	LegionMountsArtifacts = {
+		AffWarlock = {
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\AffWarlock.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\AffWarlock.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\AffWarlock.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\AffWarlock.blp",
+			colorImg = {
+				r = 1, g = 1, b = 1, a = 1,
+			},
+			colorBG = {
+				r = 1, g = 1, b = 1,
+			},
+		},
+
+		ArcMage = {
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\ArcMage.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\ArcMage.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\ArcMage.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\ArcMage.blp",
+			colorImg = {
+				r = 1, g = 1, b = 1, a = 1,
+			},
+			colorBG = {
+				r = 1, g = 1, b = 1,
+			},
+		},
+
+		BrewMonk = {
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\BrewMonk.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\BrewMonk.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\BrewMonk.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\BrewMonk.blp",
+			colorImg = {
+				r = 1, g = 1, b = 1, a = 1,
+			},
+			colorBG = {
+				r = 1, g = 1, b = 1,
+			},
+		},
+
+		DH = {
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DH.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DH.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DH.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DH.blp",
+			colorImg = {
+				r = 1, g = 1, b = 1, a = 1,
+			},
+			colorBG = {
+				r = 1, g = 1, b = 1,
+			},
+		},
+
+		DHMount = {
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DHMount.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DHMount.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DHMount.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DHMount.blp",
+			colorImg = {
+				r = 1, g = 1, b = 1, a = 1,
+			},
+			colorBG = {
+				r = 1, g = 1, b = 1,
+			},
+		},
+
+		DiscPriest = {
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DiscPriest.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DiscPriest.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DiscPriest.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DiscPriest.blp",
+			colorImg = {
+				r = 1, g = 1, b = 1, a = 1,
+			},
+			colorBG = {
+				r = 1, g = 1, b = 1,
+			},
+		},
+
+		DKMount = {
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DKMount.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DKMount.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DKMount.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DKMount.blp",
+			colorImg = {
+				r = 1, g = 1, b = 1, a = 1,
+			},
+			colorBG = {
+				r = 1, g = 1, b = 1,
+			},
+		},
+
+		DruidMount = {
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DruidMount.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DruidMount.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DruidMount.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DruidMount.blp",
+			colorImg = {
+				r = 1, g = 1, b = 1, a = 1,
+			},
+			colorBG = {
+				r = 1, g = 1, b = 1,
+			},
+		},
+
+		HolyPaladin = {
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\HolyPaladin.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\HolyPaladin.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\HolyPaladin.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\HolyPaladin.blp",
+			colorImg = {
+				r = 1, g = 1, b = 1, a = 1,
+			},
+			colorBG = {
+				r = 1, g = 1, b = 1,
+			},
+		},
+
+		HunterMount = {
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\HunterMount.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\HunterMount.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\HunterMount.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\HunterMount.blp",
+			colorImg = {
+				r = 1, g = 1, b = 1, a = 1,
+			},
+			colorBG = {
+				r = 1, g = 1, b = 1,
+			},
+		},
+
+		MageMount = {
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MageMount.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MageMount.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MageMount.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MageMount.blp",
+			colorImg = {
+				r = 1, g = 1, b = 1, a = 1,
+			},
+			colorBG = {
+				r = 1, g = 1, b = 1,
+			},
+		},
+
+		MMHunter = {
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MMHunter.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MMHunter.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MMHunter.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MMHunter.blp",
+			colorImg = {
+				r = 1, g = 1, b = 1, a = 1,
+			},
+			colorBG = {
+				r = 1, g = 1, b = 1,
+			},
+		},
+
+		MMHunter2 = {
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MMHunter2.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MMHunter2.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MMHunter2.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MMHunter2.blp",
+			colorImg = {
+				r = 1, g = 1, b = 1, a = 1,
+			},
+			colorBG = {
+				r = 1, g = 1, b = 1,
+			},
+		},
+
+		MonkMount = {
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MonkMount.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MonkMount.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MonkMount.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MonkMount.blp",
+			colorImg = {
+				r = 1, g = 1, b = 1, a = 1,
+			},
+			colorBG = {
+				r = 1, g = 1, b = 1,
+			},
+		},
+
+		OutlawRogue = {
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\OutlawRogue.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\OutlawRogue.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\OutlawRogue.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\OutlawRogue.blp",
+			colorImg = {
+				r = 1, g = 1, b = 1, a = 1,
+			},
+			colorBG = {
+				r = 1, g = 1, b = 1,
+			},
+		},
+
+		PaladinMount = {
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\PaladinMount.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\PaladinMount.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\PaladinMount.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\PaladinMount.blp",
+			colorImg = {
+				r = 1, g = 1, b = 1, a = 1,
+			},
+			colorBG = {
+				r = 1, g = 1, b = 1,
+			},
+		},
+
+		PriestMount = {
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\PriestMount.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\PriestMount.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\PriestMount.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\PriestMount.blp",
+			colorImg = {
+				r = 1, g = 1, b = 1, a = 1,
+			},
+			colorBG = {
+				r = 1, g = 1, b = 1,
+			},
+		},
+
+		RestoDruid = {
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\RestoDruid.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\RestoDruid.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\RestoDruid.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\RestoDruid.blp",
+			colorImg = {
+				r = 1, g = 1, b = 1, a = 1,
+			},
+			colorBG = {
+				r = 1, g = 1, b = 1,
+			},
+		},
+
+		RestoSham = {
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\RestoSham.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\RestoSham.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\RestoSham.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\RestoSham.blp",
+			colorImg = {
+				r = 1, g = 1, b = 1, a = 1,
+			},
+			colorBG = {
+				r = 1, g = 1, b = 1,
+			},
+		},
+
+		RogueMount = {
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\RogueMount.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\RogueMount.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\RogueMount.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\RogueMount.blp",
+			colorImg = {
+				r = 1, g = 1, b = 1, a = 1,
+			},
+			colorBG = {
+				r = 1, g = 1, b = 1,
+			},
+		},
+
+		ShamMount = {
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\ShamMount.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\ShamMount.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\ShamMount.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\ShamMount.blp",
+			colorImg = {
+				r = 1, g = 1, b = 1, a = 1,
+			},
+			colorBG = {
+				r = 1, g = 1, b = 1,
+			},
+		},
+
+		UnholyDK = {
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\UnholyDK.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\UnholyDK.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\UnholyDK.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\UnholyDK.blp",
+			colorImg = {
+				r = 1, g = 1, b = 1, a = 1,
+			},
+			colorBG = {
+				r = 1, g = 1, b = 1,
+			},
+		},
+
+		WarlockMount = {
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\WarlockMount.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\WarlockMount.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\WarlockMount.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\WarlockMount.blp",
+			colorImg = {
+				r = 1, g = 1, b = 1, a = 1,
+			},
+			colorBG = {
+				r = 1, g = 1, b = 1,
+			},
+		},
+
+		Warrior1 = {
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\Warrior1.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\Warrior1.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\Warrior1.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\Warrior1.blp",
+			colorImg = {
+				r = 1, g = 1, b = 1, a = 1,
+			},
+			colorBG = {
+				r = 1, g = 1, b = 1,
+			},
+		},
+
+		WarrMount = {
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\WarrMount.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\WarrMount.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\WarrMount.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\WarrMount.blp",
+			colorImg = {
+				r = 1, g = 1, b = 1, a = 1,
+			},
+			colorBG = {
+				r = 1, g = 1, b = 1,
+			},
+		},
+	},
+
+
 
 
 
@@ -905,6 +1233,7 @@ L.defaultTextures = {
 	EVOKER = {
 		[1] = "talents-background-evoker-devastation",
 		[2] = "talents-background-evoker-preservation",
+		[3] = "talents-background-evoker-augmentation",
 	},
 	
 	DRUID = {
