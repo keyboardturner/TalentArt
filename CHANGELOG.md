@@ -1,3 +1,7 @@
+# 0.2.4
+
+11.1.5 toc update & addon category
+
 # 0.2.3
 
 Added art from the artwork that Blizzard commissioned for Legion Mounts & Artifacts
