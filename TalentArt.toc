@@ -1,9 +1,9 @@
+## Interface: 110207
 ## Title: TalentArt
-## Version: @project-version@
-## Author: Keyboardturner
-## Interface: 110205
-## IconTexture: Interface/Icons/Inv_7xp_inscription_talenttome02.blp
 ## Notes: Allows changing the talent frame artwork.
+## Author: Keyboardturner
+## Version: @project-version@
+## IconTexture: Interface/Icons/Inv_7xp_inscription_talenttome02.blp
 ## SavedVariablesPerCharacter: TalentArt_DB
 ## X-Curse-Project-ID: 102667
 ## X-WoWI-ID: 24380
