@@ -1,4 +1,4 @@
-## Interface: 110207, 120000
+## Interface: 120000, 120001
 ## Title: TalentArt
 ## Notes: Allows changing the talent frame artwork.
 ## Author: Keyboardturner
