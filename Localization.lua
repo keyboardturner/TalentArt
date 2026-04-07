@@ -1,4 +1,8 @@
-local TalentArt, L = ...; -- Let's use the private table passed to every .lua 
+local addonName, TalentArt = ...;
+
+local L = {};
+
+TalentArt.L = L;
 
 local function defaultFunc(L, key)
  -- If this function was called, we have no localization for this key.

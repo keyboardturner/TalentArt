@@ -1,1209 +1,1002 @@
-local TalentArt, L = ...
+local addonName, TalentArt = ...;
 
-L.talentTextures = {
+local L = TalentArt.L;
+
+TalentArt.themeList = {
+	{ key = "Classic", name = "Classic" },
+	{ key = "Artifact", name = "Artifact Traits" },
+	{ key = "Website", name = "Blizzard Website" },
+	{ key = "LegionMountsArtifacts", name = "Legion Artifacts & Mounts" },
+	{ key = "Default", name = "Blizzard Defaults" },
+};
+
+TalentArt.talentTextures = {
 	backgroundTester = {
 		background = "Interface\\AddOns\\TalentArt\\Media\\Class2\\Rogue.blp",
 		right = "Interface\\AddOns\\TalentArt\\Media\\Class2\\Rogue.blp",
 		flash = "Interface\\AddOns\\TalentArt\\Media\\Class2\\Rogue.blp",
 		mid = "Interface\\AddOns\\TalentArt\\Media\\Class2\\Rogue.blp",
-		colorImg = {
-			r = 1, g = 1, b = 1, a = 1,
-		},
-		colorBG = {
-			r = 1, g = 1, b = 1,
-		},
+		colorImg = { r = 1, g = 1, b = 1, a = 1, },
+		colorBG = { r = 1, g = 1, b = 1, },
 	},
 
 	Classic = {
-		--[[
-		DemonHunterHavoc = {
-			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\DemonHunterHavoc.blp",
-			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\DemonHunterHavoc.blp",
-			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\DemonHunterHavoc.blp",
-			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\DemonHunterHavoc.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
-		},
-		DemonHunterVeng = {
-			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\DemonHunterVeng.blp",
-			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\DemonHunterVeng.blp",
-			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\DemonHunterVeng.blp",
-			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\DemonHunterVeng.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
-		},
-		]]
-
-
-		DeathKnightBlood = {
+		{
+			className = "Death Knight",
+			classFile = "DeathKnight",
+			specName = "Blood",
+			specFile = "Blood",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\DeathKnight_Blood.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\DeathKnight_Blood.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\DeathKnight_Blood.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\DeathKnight_Blood.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-		DeathKnightFrost = {
+		{
+			className = "Death Knight",
+			classFile = "DeathKnight",
+			specName = "Frost",
+			specFile = "Frost",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\DeathKnight_Frost.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\DeathKnight_Frost.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\DeathKnight_Frost.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\DeathKnight_Frost.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-		DeathKnightUnholy = {
+		{
+			className = "Death Knight",
+			classFile = "DeathKnight",
+			specName = "Unholy",
+			specFile = "Unholy",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\DeathKnight_Unholy.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\DeathKnight_Unholy.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\DeathKnight_Unholy.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\DeathKnight_Unholy.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-
-
-		DruidBalance = {
+		{
+			className = "Druid",
+			classFile = "Druid",
+			specName = "Balance",
+			specFile = "Balance",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Druid_Balance.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Druid_Balance.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Druid_Balance.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Druid_Balance.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-		DruidFeral = {
+		{
+			className = "Druid",
+			classFile = "Druid",
+			specName = "Feral",
+			specFile = "Feral",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Druid_Feral.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Druid_Feral.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Druid_Feral.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Druid_Feral.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-		--[[
-		DruidGuardian = {
-			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\DruidGuardian.blp",
-			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\DruidGuardian.blp",
-			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\DruidGuardian.blp",
-			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\DruidGuardian.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
-		},
-		]]
-		DruidResto = {
+		{
+			className = "Druid",
+			classFile = "Druid",
+			specName = "Restoration",
+			specFile = "Resto",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Druid_Restoration.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Druid_Restoration.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Druid_Restoration.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Druid_Restoration.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-
-		
-		HunterBeast = {
+		{
+			className = "Hunter",
+			classFile = "Hunter",
+			specName = "Beast Master",
+			specFile = "Beast",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Hunter_Beastmastery.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Hunter_Beastmastery.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Hunter_Beastmastery.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Hunter_Beastmastery.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-		HunterMM = {
+		{
+			className = "Hunter",
+			classFile = "Hunter",
+			specName = "Marksmanship",
+			specFile = "MM",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Hunter_Marksmanship.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Hunter_Marksmanship.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Hunter_Marksmanship.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Hunter_Marksmanship.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-		HunterSV = {
+		{
+			className = "Hunter",
+			classFile = "Hunter",
+			specName = "Survival",
+			specFile = "SV",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Hunter_Survival.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Hunter_Survival.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Hunter_Survival.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Hunter_Survival.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-		HunterPetCunning = {
+		{
+			className = "Hunter",
+			classFile = "Hunter",
+			specName = "Cunning",
+			specFile = "PetCunning",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Pet_Cunning.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Pet_Cunning.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Pet_Cunning.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Pet_Cunning.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-		HunterPetFerocity = {
+		{
+			className = "Hunter",
+			classFile = "Hunter",
+			specName = "Ferocity",
+			specFile = "PetFerocity",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Pet_Ferocity.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Pet_Ferocity.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Pet_Ferocity.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Pet_Ferocity.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-		HunterPetTenacity = {
+		{
+			className = "Hunter",
+			classFile = "Hunter",
+			specName = "Tenacity",
+			specFile = "PetTenacity",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Pet_Tenacity.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Pet_Tenacity.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Pet_Tenacity.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Pet_Tenacity.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-
-
-		MageArcane = {
+		{
+			className = "Mage",
+			classFile = "Mage",
+			specName = "Arcane",
+			specFile = "Arcane",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Mage_Arcane.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Mage_Arcane.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Mage_Arcane.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Mage_Arcane.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-		MageFire = {
+		{
+			className = "Mage",
+			classFile = "Mage",
+			specName = "Fire",
+			specFile = "Fire",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Mage_Fire.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Mage_Fire.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Mage_Fire.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Mage_Fire.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-		MageFrost = {
+		{
+			className = "Mage",
+			classFile = "Mage",
+			specName = "Frost",
+			specFile = "Frost",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Mage_Frost.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Mage_Frost.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Mage_Frost.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Mage_Frost.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-
-		--[[
-		MonkBM = {
-			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\MonkBM.blp",
-			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\MonkBM.blp",
-			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\MonkBM.blp",
-			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\MonkBM.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
-		},
-		MonkMW = {
-			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\MonkMW.blp",
-			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\MonkMW.blp",
-			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\MonkMW.blp",
-			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\MonkMW.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
-		},
-		MonkWW = {
-			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\MonkWW.blp",
-			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\MonkWW.blp",
-			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\MonkWW.blp",
-			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\MonkWW.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
-		},
-		]]
-
-		PaladinHoly = {
+		{
+			className = "Paladin",
+			classFile = "Paladin",
+			specName = "Holy",
+			specFile = "Holy",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Paladin_Holy.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Paladin_Holy.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Paladin_Holy.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Paladin_Holy.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-		PaladinProt = {
+		{
+			className = "Paladin",
+			classFile = "Paladin",
+			specName = "Protection",
+			specFile = "Prot",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Paladin_Protection.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Paladin_Protection.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Paladin_Protection.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Paladin_Protection.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-		PaladinRet = {
+		{
+			className = "Paladin",
+			classFile = "Paladin",
+			specName = "Retribution",
+			specFile = "Ret",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Paladin_Retribution.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Paladin_Retribution.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Paladin_Retribution.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Paladin_Retribution.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-
-
-		PriestDisc = {
+		{
+			className = "Priest",
+			classFile = "Priest",
+			specName = "Discipline",
+			specFile = "Disc",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Priest_Discipline.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Priest_Discipline.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Priest_Discipline.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Priest_Discipline.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-		PriestHoly = {
+		{
+			className = "Priest",
+			classFile = "Priest",
+			specName = "Holy",
+			specFile = "Holy",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Priest_Holy.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Priest_Holy.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Priest_Holy.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Priest_Holy.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-		PriestVoid = {
+		{
+			className = "Priest",
+			classFile = "Priest",
+			specName = "Shadow",
+			specFile = "Void",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Priest_Shadow.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Priest_Shadow.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Priest_Shadow.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Priest_Shadow.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-
-
-		RogueAss = {
+		{
+			className = "Rogue",
+			classFile = "Rogue",
+			specName = "Assassination",
+			specFile = "Ass",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Rogue_Assassination.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Rogue_Assassination.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Rogue_Assassination.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Rogue_Assassination.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-		RogueOutlaw = {
+		{
+			className = "Rogue",
+			classFile = "Rogue",
+			specName = "Combat",
+			specFile = "Outlaw",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Rogue_Combat.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Rogue_Combat.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Rogue_Combat.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Rogue_Combat.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-		RogueSub = {
+		{
+			className = "Rogue",
+			classFile = "Rogue",
+			specName = "Subtlety",
+			specFile = "Sub",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Rogue_Subtlety.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Rogue_Subtlety.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Rogue_Subtlety.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Rogue_Subtlety.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-
-
-		ShamanEle = {
+		{
+			className = "Shaman",
+			classFile = "Shaman",
+			specName = "Elemental",
+			specFile = "Ele",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Shaman_Elemental.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Shaman_Elemental.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Shaman_Elemental.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Shaman_Elemental.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-		ShamanEnh = {
+		{
+			className = "Shaman",
+			classFile = "Shaman",
+			specName = "Enhancement",
+			specFile = "Enh",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Shaman_Enhance.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Shaman_Enhance.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Shaman_Enhance.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Shaman_Enhance.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-		ShamanResto = {
+		{
+			className = "Shaman",
+			classFile = "Shaman",
+			specName = "Restoration",
+			specFile = "Resto",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Shaman_Restoration.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Shaman_Restoration.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Shaman_Restoration.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Shaman_Restoration.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-
-
-		WarlockAff = {
+		{
+			className = "Warlock",
+			classFile = "Warlock",
+			specName = "Affliction",
+			specFile = "Aff",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Warlock_Affliction.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Warlock_Affliction.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Warlock_Affliction.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Warlock_Affliction.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-		WarlockDemo = {
+		{
+			className = "Warlock",
+			classFile = "Warlock",
+			specName = "Demonology",
+			specFile = "Demo",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Warlock_Demonology.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Warlock_Demonology.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Warlock_Demonology.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Warlock_Demonology.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-		WarlockDest = {
+		{
+			className = "Warlock",
+			classFile = "Warlock",
+			specName = "Destruction",
+			specFile = "Dest",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Warlock_Destruction.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Warlock_Destruction.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Warlock_Destruction.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Warlock_Destruction.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-
-
-		WarriorArms1 = {
+		{
+			className = "Warrior",
+			classFile = "Warrior",
+			specName = "Arms 1",
+			specFile = "Arms1",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Warrior_Arms1.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Warrior_Arms1.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Warrior_Arms1.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Warrior_Arms1.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-		WarriorArms2 = {
+		{
+			className = "Warrior",
+			classFile = "Warrior",
+			specName = "Arms 2",
+			specFile = "Arms2",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Warrior_Arms2.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Warrior_Arms2.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Warrior_Arms2.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Warrior_Arms2.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-		WarriorFury = {
+		{
+			className = "Warrior",
+			classFile = "Warrior",
+			specName = "Fury",
+			specFile = "Fury",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Warrior_Fury.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Warrior_Fury.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Warrior_Fury.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Warrior_Fury.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-		WarriorProt = {
+		{
+			className = "Warrior",
+			classFile = "Warrior",
+			specName = "Protection",
+			specFile = "Prot",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Warrior_Prot.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Warrior_Prot.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Warrior_Prot.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Classic\\Warrior_Prot.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
 	},
 
-	
 	Artifact = {
-		DeathKnight = {
+		{
+			className = "Death Knight",
+			classFile = "DeathKnight",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\DeathKnight.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\DeathKnight.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\DeathKnight.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\DeathKnight.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-
-		DemonHunter = {
+		{
+			className = "Demon Hunter",
+			classFile = "DemonHunter",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\DemonHunter.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\DemonHunter.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\DemonHunter.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\DemonHunter.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-
-		Druid = {
+		{
+			className = "Druid",
+			classFile = "Druid",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Druid.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Druid.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Druid.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Druid.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-
-		Hunter = {
+		{
+			className = "Hunter",
+			classFile = "Hunter",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Hunter.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Hunter.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Hunter.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Hunter.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-
-		Mage = {
+		{
+			className = "Mage",
+			classFile = "Mage",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Mage.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Mage.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Mage.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Mage.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-
-		Monk = {
+		{
+			className = "Monk",
+			classFile = "Monk",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Monk.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Monk.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Monk.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Monk.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-		
-		Paladin = {
+		{
+			className = "Paladin",
+			classFile = "Paladin",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Paladin.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Paladin.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Paladin.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Paladin.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-		
-		Priest = {
+		{
+			className = "Priest",
+			classFile = "Priest",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Priest.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Priest.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Priest.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Priest.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-		PriestShadow = {
+		{
+			className = "Priest Shadow",
+			classFile = "PriestShadow",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Priest_Shadow.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Priest_Shadow.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Priest_Shadow.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Priest_Shadow.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-		
-		Rogue = {
+		{
+			className = "Rogue",
+			classFile = "Rogue",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Rogue.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Rogue.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Rogue.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Rogue.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-		
-		Shaman = {
+		{
+			className = "Shaman",
+			classFile = "Shaman",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Shaman.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Shaman.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Shaman.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Shaman.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-		
-		Warlock = {
+		{
+			className = "Warlock",
+			classFile = "Warlock",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Warlock.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Warlock.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Warlock.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Warlock.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-		
-		Warrior = {
+		{
+			className = "Warrior",
+			classFile = "Warrior",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Warrior.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Warrior.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Warrior.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Artifact\\Warrior.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-
-
-
 	},
 
-
 	Website = {
-		DeathKnight = {
+		{
+			className = "Death Knight",
+			classFile = "DeathKnight",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Website\\DeathKnight.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Website\\DeathKnight.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Website\\DeathKnight.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Website\\DeathKnight.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-
-		DemonHunter = {
+		{
+			className = "Demon Hunter",
+			classFile = "DemonHunter",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Website\\DemonHunter.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Website\\DemonHunter.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Website\\DemonHunter.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Website\\DemonHunter.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-
-		Druid = {
+		{
+			className = "Druid",
+			classFile = "Druid",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Website\\Druid.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Website\\Druid.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Website\\Druid.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Website\\Druid.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-
-		Evoker = {
+		{
+			className = "Evoker",
+			classFile = "Evoker",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Website\\Evoker.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Website\\Evoker.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Website\\Evoker.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Website\\Evoker.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-
-		Hunter = {
+		{
+			className = "Hunter",
+			classFile = "Hunter",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Website\\Hunter.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Website\\Hunter.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Website\\Hunter.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Website\\Hunter.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-
-		Mage = {
+		{
+			className = "Mage",
+			classFile = "Mage",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Website\\Mage.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Website\\Mage.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Website\\Mage.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Website\\Mage.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-
-		Monk = {
+		{
+			className = "Monk",
+			classFile = "Monk",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Website\\Monk.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Website\\Monk.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Website\\Monk.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Website\\Monk.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-
-		Paladin = {
+		{
+			className = "Paladin",
+			classFile = "Paladin",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Website\\Paladin.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Website\\Paladin.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Website\\Paladin.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Website\\Paladin.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-
-		Priest = {
+		{
+			className = "Priest",
+			classFile = "Priest",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Website\\Priest.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Website\\Priest.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Website\\Priest.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Website\\Priest.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-		
-		Rogue = {
+		{
+			className = "Rogue",
+			classFile = "Rogue",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Website\\Rogue.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Website\\Rogue.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Website\\Rogue.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Website\\Rogue.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-		
-		Shaman = {
+		{
+			className = "Shaman",
+			classFile = "Shaman",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Website\\Shaman.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Website\\Shaman.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Website\\Shaman.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Website\\Shaman.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-
-		Warlock = {
+		{
+			className = "Warlock",
+			classFile = "Warlock",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Website\\Warlock.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Website\\Warlock.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Website\\Warlock.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Website\\Warlock.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-		
-		Warrior = {
+		{
+			className = "Warrior",
+			classFile = "Warrior",
 			background = "Interface\\AddOns\\TalentArt\\Media\\Website\\Warrior.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\Website\\Warrior.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\Website\\Warrior.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\Website\\Warrior.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
 	},
 
-
 	LegionMountsArtifacts = {
-		AffWarlock = {
+		{
+			className = "Affliction Warlock",
+			classFile = "AffWarlock",
 			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\AffWarlock.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\AffWarlock.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\AffWarlock.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\AffWarlock.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-
-		ArcMage = {
+		{
+			className = "Arcane Mage",
+			classFile = "ArcMage",
 			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\ArcMage.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\ArcMage.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\ArcMage.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\ArcMage.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-
-		BrewMonk = {
+		{
+			className = "Brewmaster Monk",
+			classFile = "BrewMonk",
 			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\BrewMonk.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\BrewMonk.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\BrewMonk.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\BrewMonk.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-
-		DH = {
+		{
+			className = "Havoc Demon Hunter",
+			classFile = "DH",
 			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DH.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DH.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DH.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DH.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-
-		DHMount = {
+		{
+			className = "Demon Hunter Mount",
+			classFile = "DHMount",
 			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DHMount.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DHMount.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DHMount.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DHMount.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-
-		DiscPriest = {
+		{
+			className = "Discipline Priest",
+			classFile = "DiscPriest",
 			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DiscPriest.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DiscPriest.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DiscPriest.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DiscPriest.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-
-		DKMount = {
+		{
+			className = "Death Knight Mount",
+			classFile = "DKMount",
 			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DKMount.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DKMount.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DKMount.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DKMount.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-
-		DruidMount = {
-			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DruidMount.blp",
-			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DruidMount.blp",
-			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DruidMount.blp",
-			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DruidMount.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
-		},
-
-		HolyPaladin = {
-			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\HolyPaladin.blp",
-			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\HolyPaladin.blp",
-			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\HolyPaladin.blp",
-			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\HolyPaladin.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
-		},
-
-		HunterMount = {
-			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\HunterMount.blp",
-			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\HunterMount.blp",
-			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\HunterMount.blp",
-			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\HunterMount.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
-		},
-
-		MageMount = {
-			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MageMount.blp",
-			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MageMount.blp",
-			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MageMount.blp",
-			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MageMount.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
-		},
-
-		MMHunter = {
-			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MMHunter.blp",
-			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MMHunter.blp",
-			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MMHunter.blp",
-			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MMHunter.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
-		},
-
-		MMHunter2 = {
-			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MMHunter2.blp",
-			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MMHunter2.blp",
-			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MMHunter2.blp",
-			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MMHunter2.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
-		},
-
-		MonkMount = {
-			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MonkMount.blp",
-			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MonkMount.blp",
-			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MonkMount.blp",
-			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MonkMount.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
-		},
-
-		OutlawRogue = {
-			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\OutlawRogue.blp",
-			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\OutlawRogue.blp",
-			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\OutlawRogue.blp",
-			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\OutlawRogue.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
-		},
-
-		PaladinMount = {
-			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\PaladinMount.blp",
-			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\PaladinMount.blp",
-			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\PaladinMount.blp",
-			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\PaladinMount.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
-		},
-
-		PriestMount = {
-			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\PriestMount.blp",
-			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\PriestMount.blp",
-			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\PriestMount.blp",
-			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\PriestMount.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
-		},
-
-		RestoDruid = {
-			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\RestoDruid.blp",
-			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\RestoDruid.blp",
-			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\RestoDruid.blp",
-			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\RestoDruid.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
-		},
-
-		RestoSham = {
-			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\RestoSham.blp",
-			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\RestoSham.blp",
-			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\RestoSham.blp",
-			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\RestoSham.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
-		},
-
-		RogueMount = {
-			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\RogueMount.blp",
-			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\RogueMount.blp",
-			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\RogueMount.blp",
-			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\RogueMount.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
-		},
-
-		ShamMount = {
-			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\ShamMount.blp",
-			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\ShamMount.blp",
-			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\ShamMount.blp",
-			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\ShamMount.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
-		},
-
-		UnholyDK = {
+		{
+			className = "Unholy Death Knight",
+			classFile = "UnholyDK",
 			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\UnholyDK.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\UnholyDK.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\UnholyDK.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\UnholyDK.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-
-		WarlockMount = {
+		{
+			className = "Druid Mount",
+			classFile = "DruidMount",
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DruidMount.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DruidMount.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DruidMount.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\DruidMount.blp",
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
+		},
+		{
+			className = "Holy Paladin",
+			classFile = "HolyPaladin",
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\HolyPaladin.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\HolyPaladin.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\HolyPaladin.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\HolyPaladin.blp",
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
+		},
+		{
+			className = "Hunter Mount",
+			classFile = "HunterMount",
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\HunterMount.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\HunterMount.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\HunterMount.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\HunterMount.blp",
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
+		},
+		{
+			className = "Mage Mount",
+			classFile = "MageMount",
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MageMount.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MageMount.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MageMount.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MageMount.blp",
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
+		},
+		{
+			className = "Marksmanship Hunter",
+			classFile = "MMHunter",
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MMHunter.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MMHunter.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MMHunter.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MMHunter.blp",
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
+		},
+		{
+			className = "Marksmanship Hunter 2",
+			classFile = "MMHunter2",
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MMHunter2.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MMHunter2.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MMHunter2.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MMHunter2.blp",
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
+		},
+		{
+			className = "Monk Mount",
+			classFile = "MonkMount",
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MonkMount.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MonkMount.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MonkMount.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\MonkMount.blp",
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
+		},
+		{
+			className = "Outlaw Rogue",
+			classFile = "OutlawRogue",
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\OutlawRogue.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\OutlawRogue.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\OutlawRogue.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\OutlawRogue.blp",
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
+		},
+		{
+			className = "Paladin Mount",
+			classFile = "PaladinMount",
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\PaladinMount.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\PaladinMount.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\PaladinMount.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\PaladinMount.blp",
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
+		},
+		{
+			className = "Priest Mount",
+			classFile = "PriestMount",
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\PriestMount.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\PriestMount.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\PriestMount.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\PriestMount.blp",
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
+		},
+		{
+			className = "Restoration Druid",
+			classFile = "RestoDruid",
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\RestoDruid.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\RestoDruid.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\RestoDruid.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\RestoDruid.blp",
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
+		},
+		{
+			className = "Restoration Shaman",
+			classFile = "RestoSham",
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\RestoSham.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\RestoSham.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\RestoSham.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\RestoSham.blp",
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
+		},
+		{
+			className = "Rogue Mount",
+			classFile = "RogueMount",
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\RogueMount.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\RogueMount.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\RogueMount.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\RogueMount.blp",
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
+		},
+		{
+			className = "Shaman Mount",
+			classFile = "ShamMount",
+			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\ShamMount.blp",
+			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\ShamMount.blp",
+			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\ShamMount.blp",
+			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\ShamMount.blp",
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
+		},
+		{
+			className = "Warlock Mount",
+			classFile = "WarlockMount",
 			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\WarlockMount.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\WarlockMount.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\WarlockMount.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\WarlockMount.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-
-		Warrior1 = {
+		{
+			className = "Arms Warrior",
+			classFile = "Warrior1",
 			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\Warrior1.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\Warrior1.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\Warrior1.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\Warrior1.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
-
-		WarrMount = {
+		{
+			className = "Warrior Mount",
+			classFile = "WarrMount",
 			background = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\WarrMount.blp",
 			right = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\WarrMount.blp",
 			flash = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\WarrMount.blp",
 			mid = "Interface\\AddOns\\TalentArt\\Media\\LegionMountsArtifacts\\WarrMount.blp",
-			colorImg = {
-				r = 1, g = 1, b = 1, a = 1,
-			},
-			colorBG = {
-				r = 1, g = 1, b = 1,
-			},
+			colorImg = { r = 1, g = 1, b = 1, a = 1, },
+			colorBG = { r = 1, g = 1, b = 1, },
 		},
 	},
-
-
-
-
-
+	
+	Default = {
+		{ className = "Death Knight", specName = "Blood", atlas = "talents-background-deathknight-blood" },
+		{ className = "Death Knight", specName = "Frost", atlas = "talents-background-deathknight-frost" },
+		{ className = "Death Knight", specName = "Unholy", atlas = "talents-background-deathknight-unholy" },
+		{ className = "Demon Hunter", specName = "Havoc", atlas = "talents-background-demonhunter-havoc" },
+		{ className = "Demon Hunter", specName = "Vengeance", atlas = "talents-background-demonhunter-vengeance" },
+		{ className = "Demon Hunter", specName = "Devourer", atlas = "talents-background-demonhunter-devourer" },
+		{ className = "Druid", specName = "Balance", atlas = "talents-background-druid-balance" },
+		{ className = "Druid", specName = "Feral", atlas = "talents-background-druid-feral" },
+		{ className = "Druid", specName = "Guardian", atlas = "talents-background-druid-guardian" },
+		{ className = "Druid", specName = "Restoration", atlas = "talents-background-druid-restoration" },
+		{ className = "Evoker", specName = "Devastation", atlas = "talents-background-evoker-devastation" },
+		{ className = "Evoker", specName = "Preservation", atlas = "talents-background-evoker-preservation" },
+		{ className = "Evoker", specName = "Augmentation", atlas = "talents-background-evoker-augmentation" },
+		{ className = "Hunter", specName = "Beast Mastery",atlas = "talents-background-hunter-beastmastery" },
+		{ className = "Hunter", specName = "Marksmanship", atlas = "talents-background-hunter-marksmanship" },
+		{ className = "Hunter", specName = "Survival", atlas = "talents-background-hunter-survival" },
+		{ className = "Mage", specName = "Arcane", atlas = "talents-background-mage-arcane" },
+		{ className = "Mage", specName = "Fire", atlas = "talents-background-mage-fire" },
+		{ className = "Mage", specName = "Frost", atlas = "talents-background-mage-frost" },
+		{ className = "Monk", specName = "Brewmaster", atlas = "talents-background-monk-brewmaster" },
+		{ className = "Monk", specName = "Mistweaver", atlas = "talents-background-monk-mistweaver" },
+		{ className = "Monk", specName = "Windwalker", atlas = "talents-background-monk-windwalker" },
+		{ className = "Paladin", specName = "Holy", atlas = "talents-background-paladin-holy" },
+		{ className = "Paladin", specName = "Protection", atlas = "talents-background-paladin-protection" },
+		{ className = "Paladin", specName = "Retribution", atlas = "talents-background-paladin-retribution" },
+		{ className = "Priest", specName = "Discipline", atlas = "talents-background-priest-discipline" },
+		{ className = "Priest", specName = "Holy", atlas = "talents-background-priest-holy" },
+		{ className = "Priest", specName = "Shadow", atlas = "talents-background-priest-shadow" },
+		{ className = "Rogue", specName = "Assassination",atlas = "talents-background-rogue-assassination" },
+		{ className = "Rogue", specName = "Outlaw", atlas = "talents-background-rogue-outlaw" },
+		{ className = "Rogue", specName = "Subtlety", atlas = "talents-background-rogue-subtlety" },
+		{ className = "Shaman", specName = "Elemental", atlas = "talents-background-shaman-elemental" },
+		{ className = "Shaman", specName = "Enhancement", atlas = "talents-background-shaman-enhancement" },
+		{ className = "Shaman", specName = "Restoration", atlas = "talents-background-shaman-restoration" },
+		{ className = "Warlock", specName = "Affliction", atlas = "talents-background-warlock-affliction" },
+		{ className = "Warlock", specName = "Demonology", atlas = "talents-background-warlock-demonology" },
+		{ className = "Warlock", specName = "Destruction", atlas = "talents-background-warlock-destruction" },
+		{ className = "Warrior", specName = "Arms", atlas = "talents-background-warrior-arms" },
+		{ className = "Warrior", specName = "Fury", atlas = "talents-background-warrior-fury" },
+		{ className = "Warrior", specName = "Protection", atlas = "talents-background-warrior-protection" },
+	},
 };
 
-L.defaultTextures = {
+
+
+TalentArt.defaultTextures = {
 	WARRIOR = {
 		[1] = "talents-background-warrior-arms",
 		[2] = "talents-background-warrior-fury",
@@ -1219,7 +1012,6 @@ L.defaultTextures = {
 		[2] = "talents-background-deathknight-frost",
 		[3] = "talents-background-deathknight-unholy",
 	},
-
 	HUNTER = {
 		[1] = "talents-background-hunter-beastmastery",
 		[2] = "talents-background-hunter-marksmanship",
@@ -1235,7 +1027,6 @@ L.defaultTextures = {
 		[2] = "talents-background-evoker-preservation",
 		[3] = "talents-background-evoker-augmentation",
 	},
-	
 	DRUID = {
 		[1] = "talents-background-druid-balance",
 		[2] = "talents-background-druid-feral",
@@ -1254,9 +1045,9 @@ L.defaultTextures = {
 	},
 	DEMONHUNTER = {
 		[1] = "talents-background-demonhunter-havoc",
-		[3] = "talents-background-demonhunter-vengeance",
+		[2] = "talents-background-demonhunter-vengeance",
+		[3] = "talents-background-demonhunter-devourer",
 	},
-	
 	PRIEST = {
 		[1] = "talents-background-priest-discipline",
 		[2] = "talents-background-priest-holy",

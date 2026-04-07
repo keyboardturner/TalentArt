@@ -21,6 +21,6 @@
 ## Category-zhCN: 材质
 ## Category-zhTW: 材質
 
+Localization.lua
 Assets.lua
 TalentArt.lua
-Localization.lua

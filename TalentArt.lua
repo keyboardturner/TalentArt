@@ -1,4 +1,6 @@
-local _, L = ...
+local addonName, TalentArt = ...;
+
+local L = TalentArt.L;
 
 local defaultsTable = {
 };
@@ -23,7 +25,7 @@ end
 
 TalentArtPanel.Preview.tex = TalentArtPanel.Preview:CreateTexture()
 TalentArtPanel.Preview.tex:SetAllPoints(TalentArtPanel.Preview)
-TalentArtPanel.Preview.tex:SetTexture(L.talentTextures.backgroundTester.background)
+TalentArtPanel.Preview.tex:SetTexture(TalentArt.talentTextures.backgroundTester.background)
 TalentArtPanel.Preview.tex:SetScript("OnShow", function()
 	if C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID()) == nil then
 		TalentArtPanel.specName:SetText(L["CurrentConfig"] .. L["NoConfig"] )
@@ -32,17 +34,27 @@ TalentArtPanel.Preview.tex:SetScript("OnShow", function()
 	end
 	if (TalentArt_DB == nil) or (TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())] == nil) then
 		local class, classIndex = UnitClassBase("player")
-		for k, v in pairs(L.defaultTextures[class]) do
+		for k, v in pairs(TalentArt.defaultTextures[class]) do
 			if k == GetSpecialization() then
-				TalentArtPanel.Preview.tex:SetAtlas(L.defaultTextures[class][k])
+				TalentArtPanel.Preview.tex:SetAtlas(TalentArt.defaultTextures[class][k])
 			end
 		end
 		if TalentArt_DB[talentArt.specChecker(specID)] ~= nil and talentArt.specChecker() ~= false then
-			TalentArtPanel.Preview.tex:SetTexture(TalentArt_DB[talentArt.specChecker(specID)].background)
+			local entry = TalentArt_DB[talentArt.specChecker(specID)]
+			if entry.atlas then
+				TalentArtPanel.Preview.tex:SetAtlas(entry.atlas)
+			else
+				TalentArtPanel.Preview.tex:SetTexture(entry.background)
+			end
 		end
 		return
 	else
-	TalentArtPanel.Preview.tex:SetTexture(TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())].background)
+		local entry = TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())]
+		if entry.atlas then
+			TalentArtPanel.Preview.tex:SetAtlas(entry.atlas)
+		else
+			TalentArtPanel.Preview.tex:SetTexture(entry.background)
+		end
 	end
 end)
 
@@ -85,14 +97,6 @@ function TalentArtPanel:InitializeOptions(event, arg1)
 	end
 end
 
-
-
-
-
-
-
-
-
 TalentArtPanel:SetScript("OnEvent", TalentArtPanel.InitializeOptions)
 
 
@@ -100,6 +104,20 @@ talentArt:RegisterEvent("TRAIT_CONFIG_UPDATED")
 talentArt:RegisterEvent("PLAYER_TALENT_UPDATE")
 talentArt.Events = CreateFrame("Frame")
 talentArt.Events:RegisterEvent("ADDON_LOADED")
+
+local function applyFrameEntry(entry)
+	if entry.atlas then
+		PlayerSpellsFrame.TalentsFrame.Background:SetAtlas(entry.atlas)
+		PlayerSpellsFrame.TalentsFrame.OverlayBackgroundRight:SetAtlas(entry.atlas)
+		PlayerSpellsFrame.TalentsFrame.BackgroundFlash:SetAtlas(entry.atlas)
+		PlayerSpellsFrame.TalentsFrame.OverlayBackgroundMid:SetAtlas(entry.atlas)
+	else
+		PlayerSpellsFrame.TalentsFrame.Background:SetTexture(entry.background)
+		PlayerSpellsFrame.TalentsFrame.OverlayBackgroundRight:SetTexture(entry.right)
+		PlayerSpellsFrame.TalentsFrame.BackgroundFlash:SetTexture(entry.flash)
+		PlayerSpellsFrame.TalentsFrame.OverlayBackgroundMid:SetTexture(entry.mid)
+	end
+end
 
 function talentArt.doStuff()
 	if PlayerSpellsFrame == nil then
@@ -112,46 +130,38 @@ function talentArt.doStuff()
 	local bingus = C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())
 
 	--print("DEBUG talent build ID: " .. (bingus or "nil"))
-	--print(L.talentTextures[backgroundTester][texture])
 
 	local class, classIndex = UnitClassBase("player")
 	if ((TalentArt_DB == nil) or (TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())] == nil)) and talentArt.specChecker() == false then
 		--(TalentArt_DB[specID] ~= nil)
-		for k, v in pairs(L.defaultTextures[class]) do
+		for k, v in pairs(TalentArt.defaultTextures[class]) do
 			if k == GetSpecialization() then
 				--print("DEBUG class 1: " .. class)
-				--print("DEBUG texture 1: " .. L.defaultTextures[class][k])
-				PlayerSpellsFrame.TalentsFrame.Background:SetAtlas(L.defaultTextures[class][k])
-				PlayerSpellsFrame.TalentsFrame.OverlayBackgroundRight:SetAtlas(L.defaultTextures[class][k])
-				PlayerSpellsFrame.TalentsFrame.BackgroundFlash:SetAtlas(L.defaultTextures[class][k])
-				PlayerSpellsFrame.TalentsFrame.OverlayBackgroundMid:SetAtlas(L.defaultTextures[class][k])
+				--print("DEBUG texture 1: " .. TalentArt.defaultTextures[class][k])
+				PlayerSpellsFrame.TalentsFrame.Background:SetAtlas(TalentArt.defaultTextures[class][k])
+				PlayerSpellsFrame.TalentsFrame.OverlayBackgroundRight:SetAtlas(TalentArt.defaultTextures[class][k])
+				PlayerSpellsFrame.TalentsFrame.BackgroundFlash:SetAtlas(TalentArt.defaultTextures[class][k])
+				PlayerSpellsFrame.TalentsFrame.OverlayBackgroundMid:SetAtlas(TalentArt.defaultTextures[class][k])
 			end
 		end
 	else
 		if TalentArt_DB[talentArt.specChecker(specID)] ~= nil and talentArt.specChecker() ~= false then
-			PlayerSpellsFrame.TalentsFrame.Background:SetTexture(TalentArt_DB[talentArt.specChecker(specID)].background)
-			PlayerSpellsFrame.TalentsFrame.OverlayBackgroundRight:SetTexture(TalentArt_DB[talentArt.specChecker(specID)].right)
-			PlayerSpellsFrame.TalentsFrame.BackgroundFlash:SetTexture(TalentArt_DB[talentArt.specChecker(specID)].flash)
-			PlayerSpellsFrame.TalentsFrame.OverlayBackgroundMid:SetTexture(TalentArt_DB[talentArt.specChecker(specID)].mid)
+			applyFrameEntry(TalentArt_DB[talentArt.specChecker(specID)])
 		else
-			for k, v in pairs(L.defaultTextures[class]) do
+			for k, v in pairs(TalentArt.defaultTextures[class]) do
 				if k == GetSpecialization() then
 					--print("DEBUG class 2: " .. class)
-					--print("DEBUG texture 2: " .. L.defaultTextures[class][k])
-					PlayerSpellsFrame.TalentsFrame.Background:SetAtlas(L.defaultTextures[class][k])
-					PlayerSpellsFrame.TalentsFrame.OverlayBackgroundRight:SetAtlas(L.defaultTextures[class][k])
-					PlayerSpellsFrame.TalentsFrame.BackgroundFlash:SetAtlas(L.defaultTextures[class][k])
-					PlayerSpellsFrame.TalentsFrame.OverlayBackgroundMid:SetAtlas(L.defaultTextures[class][k])
+					--print("DEBUG texture 2: " .. TalentArt.defaultTextures[class][k])
+					PlayerSpellsFrame.TalentsFrame.Background:SetAtlas(TalentArt.defaultTextures[class][k])
+					PlayerSpellsFrame.TalentsFrame.OverlayBackgroundRight:SetAtlas(TalentArt.defaultTextures[class][k])
+					PlayerSpellsFrame.TalentsFrame.BackgroundFlash:SetAtlas(TalentArt.defaultTextures[class][k])
+					PlayerSpellsFrame.TalentsFrame.OverlayBackgroundMid:SetAtlas(TalentArt.defaultTextures[class][k])
 				end
 			end
 		end
 		if C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID()) ~= nil then
 			--print("DEBUG class 3: " .. class)
-			--print("DEBUG texture 3: " .. L.defaultTextures[class][k])
-			PlayerSpellsFrame.TalentsFrame.Background:SetTexture(TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())].background)
-			PlayerSpellsFrame.TalentsFrame.OverlayBackgroundRight:SetTexture(TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())].right)
-			PlayerSpellsFrame.TalentsFrame.BackgroundFlash:SetTexture(TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())].flash)
-			PlayerSpellsFrame.TalentsFrame.OverlayBackgroundMid:SetTexture(TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())].mid)
+			applyFrameEntry(TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())])
 		end
 	end
 end
@@ -172,30 +182,22 @@ end
 
 function talentArt.resetBackground()
 	local class, classIndex = UnitClassBase("player")
-	for k, v in pairs(L.defaultTextures[class]) do
-		if k == GetSpecialization() then
+	local specIndex = GetSpecialization()
 
-			if C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID()) then
-				TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())] = nil
-			end
-			if talentArt.specChecker() ~= false then
-				TalentArt_DB[talentArt.specChecker(specID)] = nil
-			end
-
-			TalentArtPanel.Preview.tex:SetAtlas(L.defaultTextures[class][k])
-
-			if ClassTalentFrame == nil then
-				return
-
-			else
-				PlayerSpellsFrame.TalentsFrame.Background:SetAtlas(L.defaultTextures[class][k])
-				PlayerSpellsFrame.TalentsFrame.OverlayBackgroundRight:SetAtlas(L.defaultTextures[class][k])
-				PlayerSpellsFrame.TalentsFrame.BackgroundFlash:SetAtlas(L.defaultTextures[class][k])
-				PlayerSpellsFrame.TalentsFrame.OverlayBackgroundMid:SetAtlas(L.defaultTextures[class][k])
-
-			end
-		end
+	local configID = C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())
+	if configID then
+		TalentArt_DB[configID] = nil
 	end
+	
+	if talentArt.specChecker() ~= false then
+		TalentArt_DB[talentArt.specChecker()] = nil
+	end
+
+	if TalentArt.defaultTextures[class] and TalentArt.defaultTextures[class][specIndex] then
+		TalentArtPanel.Preview.tex:SetAtlas(TalentArt.defaultTextures[class][specIndex])
+	end
+
+	talentArt.eventDelay()
 end
 
 talentArt:SetScript("OnEvent", talentArt.eventDelay)
@@ -203,515 +205,59 @@ talentArt.Events:SetScript("OnEvent", talentArt.login)
 EventRegistry:RegisterCallback('PlayerSpellsFrame.TalentTab.Show', talentArt.doStuff)
 EventRegistry:RegisterCallback('PlayerSpellsFrame.OpenFrame', talentArt.doStuff)
 
-local TableOStuff = {
-	[1] = {
-		ThemeName = "Classic",
-		ThemeFile = "Classic",
-		Data = {
-			[1] = {
-				className = "Death Knight",
-				classFile = "DeathKnight",
-				specs = {
-					[1] = {
-						specName = "Blood",
-						specFile = "Blood",
-					},
-					[2] = {
-						specName = "Frost",
-						specFile = "Frost",
-					},
-					[3] = {
-						specName = "Unholy",
-						specFile = "Unholy",
-					},
-				},
-			},
-			[2] = {
-				className = "Druid",
-				classFile = "Druid",
-				specs = {
-					[1] = {
-						specName = "Balance",
-						specFile = "Balance",
-					},
-					[2] = {
-						specName = "Feral",
-						specFile = "Feral",
-					},
-					[3] = {
-						specName = "Restoration",
-						specFile = "Resto",
-					},
-				},
-			},
-			[3] = {
-				className = "Hunter",
-				classFile = "Hunter",
-				specs = {
-					[1] = {
-						specName = "Beast Master",
-						specFile = "Beast",
-					},
-					[2] = {
-						specName = "Marksmanship",
-						specFile = "MM",
-					},
-					[3] = {
-						specName = "Survival",
-						specFile = "SV",
-					},
-					[4] = {
-						specName = "Cunning",
-						specFile = "PetCunning",
-					},
-					[5] = {
-						specName = "Ferocity",
-						specFile = "PetFerocity",
-					},
-					[6] = {
-						specName = "Tenacity",
-						specFile = "PetTenacity",
-					},
-				},
-			},
-			[4] = {
-				className = "Mage",
-				classFile = "Mage",
-				specs = {
-					[1] = {
-						specName = "Arcane",
-						specFile = "Arcane",
-					},
-					[2] = {
-						specName = "Fire",
-						specFile = "Fire",
-					},
-					[3] = {
-						specName = "Frost",
-						specFile = "Frost",
-					},
-				},
-			},
-			[5] = {
-				className = "Paladin",
-				classFile = "Paladin",
-				specs = {
-					[1] = {
-						specName = "Holy",
-						specFile = "Holy",
-					},
-					[2] = {
-						specName = "Protection",
-						specFile = "Prot",
-					},
-					[3] = {
-						specName = "Retribution",
-						specFile = "Ret",
-					},
-				},
-			},
-			[6] = {
-				className = "Priest",
-				classFile = "Priest",
-				specs = {
-					[1] = {
-						specName = "Discipline",
-						specFile = "Disc",
-					},
-					[2] = {
-						specName = "Holy",
-						specFile = "Holy",
-					},
-					[3] = {
-						specName = "Shadow",
-						specFile = "Void",
-					},
-				},
-			},
-			[7] = {
-				className = "Rogue",
-				classFile = "Rogue",
-				specs = {
-					[1] = {
-						specName = "Assassination",
-						specFile = "Ass",
-					},
-					[2] = {
-						specName = "Combat",
-						specFile = "Outlaw",
-					},
-					[3] = {
-						specName = "Subtlety",
-						specFile = "Sub",
-					},
-				},
-			},
-			[8] = {
-				className = "Shaman",
-				classFile = "Shaman",
-				specs = {
-					[1] = {
-						specName = "Elemental",
-						specFile = "Ele",
-					},
-					[2] = {
-						specName = "Enhancement",
-						specFile = "Enh",
-					},
-					[3] = {
-						specName = "Restoration",
-						specFile = "Resto",
-					},
-				},
-			},
-			[9] = {
-				className = "Warlock",
-				classFile = "Warlock",
-				specs = {
-					[1] = {
-						specName = "Affliction",
-						specFile = "Aff",
-					},
-					[2] = {
-						specName = "Demonology",
-						specFile = "Demo",
-					},
-					[3] = {
-						specName = "Destruction",
-						specFile = "Dest",
-					},
-				},
-			},
-			[10] = {
-				className = "Warrior",
-				classFile = "Warrior",
-				specs = {
-					[1] = {
-						specName = "Arms 1",
-						specFile = "Arms1",
-					},
-					[2] = {
-						specName = "Arms 2",
-						specFile = "Arms2",
-					},
-					[3] = {
-						specName = "Fury",
-						specFile = "Fury",
-					},
-					[4] = {
-						specName = "Protection",
-						specFile = "Prot",
-					},
-				},
-			},
-		},
-	},
-
-	[2] = {
-		ThemeName = "Artifact Traits",
-		ThemeFile = "Artifact",
-		Data = {
-			[1] = {
-				className = "Death Knight",
-				classFile = "DeathKnight",
-			},
-			[2] = {
-				className = "Demon Hunter",
-				classFile = "DemonHunter",
-			},
-			[3] = {
-				className = "Druid",
-				classFile = "Druid",
-			},
-			[4] = {
-				className = "Hunter",
-				classFile = "Hunter",
-			},
-			[5] = {
-				className = "Mage",
-				classFile = "Mage",
-			},
-			[6] = {
-				className = "Monk",
-				classFile = "Monk",
-			},
-			[7] = {
-				className = "Paladin",
-				classFile = "Paladin",
-			},
-			[8] = {
-				className = "Priest",
-				classFile = "Priest",
-			},
-			[9] = {
-				className = "Priest Shadow",
-				classFile = "PriestShadow",
-			},
-			[10] = {
-				className = "Rogue",
-				classFile = "Rogue",
-			},
-			[11] = {
-				className = "Shaman",
-				classFile = "Shaman",
-			},
-			[12] = {
-				className = "Warlock",
-				classFile = "Warlock",
-			},
-			[13] = {
-				className = "Warrior",
-				classFile = "Warrior",
-			},
-		},
-	},
-	
-	[3] = {
-		ThemeName = "Blizzard Website",
-		ThemeFile = "Website",
-		Data = {
-			[1] = {
-				className = "Death Knight",
-				classFile = "DeathKnight",
-			},
-			[2] = {
-				className = "Demon Hunter",
-				classFile = "DemonHunter",
-			},
-			[3] = {
-				className = "Druid",
-				classFile = "Druid",
-			},
-			[4] = {
-				className = "Evoker",
-				classFile = "Evoker",
-			},
-			[5] = {
-				className = "Hunter",
-				classFile = "Hunter",
-			},
-			[6] = {
-				className = "Mage",
-				classFile = "Mage",
-			},
-			[7] = {
-				className = "Monk",
-				classFile = "Monk",
-			},
-			[8] = {
-				className = "Paladin",
-				classFile = "Paladin",
-			},
-			[9] = {
-				className = "Priest",
-				classFile = "Priest",
-			},
-			[10] = {
-				className = "Rogue",
-				classFile = "Rogue",
-			},
-			[11] = {
-				className = "Shaman",
-				classFile = "Shaman",
-			},
-			[12] = {
-				className = "Warlock",
-				classFile = "Warlock",
-			},
-			[13] = {
-				className = "Warrior",
-				classFile = "Warrior",
-			},
-		},
-	},
-	
-	[4] = {
-		ThemeName = "Legion Artifacts & Mounts",
-		ThemeFile = "LegionMountsArtifacts",
-		Data = {
-			[1] = {
-				className = "Affliction Warlock",
-				classFile = "AffWarlock",
-			},
-			[2] = {
-				className = "Arcane Mage",
-				classFile = "ArcMage",
-			},
-			[3] = {
-				className = "Brewmaster Monk",
-				classFile = "BrewMonk",
-			},
-			[4] = {
-				className = "Havoc Demon Hunter",
-				classFile = "DH",
-			},
-			[5] = {
-				className = "Demon Hunter Mount",
-				classFile = "DHMount",
-			},
-			[6] = {
-				className = "Discipline Priest",
-				classFile = "DiscPriest",
-			},
-			[7] = {
-				className = "Unholy Death Knight",
-				classFile = "UnholyDK",
-			},
-			[8] = {
-				className = "Druid Mount",
-				classFile = "DruidMount",
-			},
-			[9] = {
-				className = "Holy Paladin",
-				classFile = "HolyPaladin",
-			},
-			[10] = {
-				className = "Hunter Mount",
-				classFile = "HunterMount",
-			},
-			[11] = {
-				className = "Mage Mount",
-				classFile = "MageMount",
-			},
-			[12] = {
-				className = "Marksmanship Hunter",
-				classFile = "MMHunter",
-			},
-			[13] = {
-				className = "Marksmanship Hunter 2",
-				classFile = "MMHunter2",
-			},
-			[14] = {
-				className = "Monk Mount",
-				classFile = "MonkMount",
-			},
-			[15] = {
-				className = "Outlaw Rogue",
-				classFile = "OutlawRogue",
-			},
-			[16] = {
-				className = "Paladin Mount",
-				classFile = "PaladinMount",
-			},
-			[17] = {
-				className = "Priest Mount",
-				classFile = "PriestMount",
-			},
-			[18] = {
-				className = "Restoration Druid",
-				classFile = "RestoDruid",
-			},
-			[19] = {
-				className = "Restoration Shaman",
-				classFile = "RestoSham",
-			},
-			[20] = {
-				className = "Rogue Mount",
-				classFile = "RogueMount",
-			},
-			[21] = {
-				className = "Shaman Mount",
-				classFile = "ShamMount",
-			},
-			[22] = {
-				className = "Warlock Mount",
-				classFile = "WarlockMount",
-			},
-			[23] = {
-				className = "Arms Warrior",
-				classFile = "Warrior1",
-			},
-			[24] = {
-				className = "Warrior Mount",
-				classFile = "WarrMount",
-			},
-		},
-	},
-};
-
 --New 11.0.0 Menu API change
 local Dropdown = CreateFrame("DropdownButton", nil, TalentArtPanel, "WowStyle1DropdownTemplate")
-Dropdown:SetDefaultText("Art Selection")
+Dropdown:OverrideText("Art Selection")
 Dropdown:SetPoint("TOPLEFT", 0, -50);
 Dropdown:SetSize(150,30)
+
+local function getCurrentKey()
+	local configID = C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())
+	if configID ~= nil then
+		return configID
+	end
+	return GetSpecializationInfo(GetSpecialization())
+end
+
+local function isEntrySelected(entry)
+	local key = getCurrentKey()
+	if not key then return false end
+	return TalentArt_DB ~= nil and TalentArt_DB[key] == entry
+end
+
+local function applyEntry(entry)
+	local key = getCurrentKey()
+	if not key then return end
+	TalentArt_DB[key] = entry
+	if entry.atlas then
+		TalentArtPanel.Preview.tex:SetAtlas(entry.atlas)
+	else
+		TalentArtPanel.Preview.tex:SetTexture(entry.background)
+	end
+	talentArt.eventDelay()
+end
+
 Dropdown:SetupMenu(function(dropdown, rootDescription)
-	--rootDescription:CreateTitle("Test Menu")
-
-	--Classic
-	local elementDescription = rootDescription:CreateButton(TableOStuff[1]["ThemeName"])
-	for k, v in ipairs(TableOStuff[1]["Data"]) do
-		local submenumenu = elementDescription:CreateButton(TableOStuff[1]["Data"][k]["className"])
-		for subk, subv in ipairs(TableOStuff[1]["Data"][k]["specs"]) do
-			local submenumenuButton = submenumenu:CreateButton(TableOStuff[1]["Data"][k]["specs"][subk]["specName"], function()
-				local bingle = L.talentTextures[TableOStuff[1]["ThemeFile"]][TableOStuff[1]["Data"][k]["classFile"]..TableOStuff[1]["Data"][k]["specs"][subk]["specFile"]]
-				local bingleBackground = L.talentTextures[TableOStuff[1]["ThemeFile"]][TableOStuff[1]["Data"][k]["classFile"]..TableOStuff[1]["Data"][k]["specs"][subk]["specFile"]]["background"]
-				if talentArt.specChecker() ~= false then
-					TalentArt_DB[talentArt.specChecker(specID)] = bingle
-					TalentArtPanel.Preview.tex:SetTexture(bingleBackground)
-				else
-					TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())] = bingle
-					TalentArtPanel.Preview.tex:SetTexture(bingleBackground)
+	for _, theme in ipairs(TalentArt.themeList) do
+		local elementDescription = rootDescription:CreateButton(theme.name)
+		local seenClasses = {}
+		for _, entry in ipairs(TalentArt.talentTextures[theme.key]) do
+			if entry.specName then
+				if not seenClasses[entry.className] then
+					seenClasses[entry.className] = elementDescription:CreateButton(entry.className)
 				end
-
-				talentArt.eventDelay()
-			end)
+				seenClasses[entry.className]:CreateRadio(entry.specName, isEntrySelected, applyEntry, entry)
+			else
+				elementDescription:CreateRadio(entry.className, isEntrySelected, applyEntry, entry)
+			end
 		end
 	end
 
-	--Artifacts
-	local elementDescription = rootDescription:CreateButton(TableOStuff[2]["ThemeName"])
-	for k, v in ipairs(TableOStuff[2]["Data"]) do
-		local submenumenu = elementDescription:CreateButton(TableOStuff[2]["Data"][k]["className"], function()
-			local bingle = L.talentTextures[TableOStuff[2]["ThemeFile"]][TableOStuff[2]["Data"][k]["classFile"]]
-			local bingleBackground = L.talentTextures[TableOStuff[2]["ThemeFile"]][TableOStuff[2]["Data"][k]["classFile"]]["background"]
-			if talentArt.specChecker() ~= false then
-				TalentArt_DB[talentArt.specChecker(specID)] = bingle
-				TalentArtPanel.Preview.tex:SetTexture(bingleBackground)
-			else
-				TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())] = bingle
-				TalentArtPanel.Preview.tex:SetTexture(bingleBackground)
-			end
-
-			talentArt.eventDelay()
-		end)
-	end
-
-	--Website
-	local elementDescription = rootDescription:CreateButton(TableOStuff[3]["ThemeName"])
-	for k, v in ipairs(TableOStuff[3]["Data"]) do
-		local submenumenu = elementDescription:CreateButton(TableOStuff[3]["Data"][k]["className"], function()
-			local bingle = L.talentTextures[TableOStuff[3]["ThemeFile"]][TableOStuff[3]["Data"][k]["classFile"]]
-			local bingleBackground = L.talentTextures[TableOStuff[3]["ThemeFile"]][TableOStuff[3]["Data"][k]["classFile"]]["background"]
-			if talentArt.specChecker() ~= false then
-				TalentArt_DB[talentArt.specChecker(specID)] = bingle
-				TalentArtPanel.Preview.tex:SetTexture(bingleBackground)
-			else
-				TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())] = bingle
-				TalentArtPanel.Preview.tex:SetTexture(bingleBackground)
-			end
-
-			talentArt.eventDelay()
-		end)
-	end
-
-	--Legion Artifacts & Mounts
-	local elementDescription = rootDescription:CreateButton(TableOStuff[4]["ThemeName"])
-	for k, v in ipairs(TableOStuff[4]["Data"]) do
-		local submenumenu = elementDescription:CreateButton(TableOStuff[4]["Data"][k]["className"], function()
-			local bingle = L.talentTextures[TableOStuff[4]["ThemeFile"]][TableOStuff[4]["Data"][k]["classFile"]]
-			local bingleBackground = L.talentTextures[TableOStuff[4]["ThemeFile"]][TableOStuff[4]["Data"][k]["classFile"]]["background"]
-			if talentArt.specChecker() ~= false then
-				TalentArt_DB[talentArt.specChecker(specID)] = bingle
-				TalentArtPanel.Preview.tex:SetTexture(bingleBackground)
-			else
-				TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())] = bingle
-				TalentArtPanel.Preview.tex:SetTexture(bingleBackground)
-			end
-
-			talentArt.eventDelay()
-		end)
-	end
-	
+	rootDescription:CreateDivider()
+	rootDescription:CreateButton("Reset to Default", function()
+		talentArt.resetBackground()
+		Dropdown:GenerateMenu()
+	end)
 end)
 
 
