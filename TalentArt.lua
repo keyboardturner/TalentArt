@@ -2,6 +2,34 @@ local addonName, TalentArt = ...;
 
 local L = TalentArt.L;
 
+local customProviders = {}
+local customProviderOrder = {}
+
+local function RegisterCustomProvider(addonKey, displayName)
+	if type(addonKey) ~= "string" or addonKey == "" then
+		error("TalentArt_API.RegisterCustomProvider: addonKey must be a non-empty string", 2);
+	end
+	if customProviders[addonKey] then
+		customProviders[addonKey].displayName = displayName or customProviders[addonKey].displayName;
+		return;
+	end
+	customProviders[addonKey] = { displayName = displayName or addonKey, entries = {} };
+	table.insert(customProviderOrder, addonKey);
+end
+
+local function RegisterCustomEntry(addonKey, label, entryData)
+	if not customProviders[addonKey] then
+		error("TalentArt_API.RegisterCustomEntry: provider '" .. tostring(addonKey) .. "' has not been registered. Call RegisterCustomProvider first.", 2);
+	end
+	if type(label) ~= "string" or label == "" then
+		error("TalentArt_API.RegisterCustomEntry: label must be a non-empty string", 2);
+	end
+	if type(entryData) ~= "table" then
+		error("TalentArt_API.RegisterCustomEntry: entryData must be a table", 2);
+	end
+	table.insert(customProviders[addonKey].entries, { label = label, data = entryData });
+end
+
 local defaultsTable = {
 	Colors = {},
 	Desaturation = {}
@@ -529,6 +557,31 @@ Dropdown:SetupMenu(function(dropdown, rootDescription)
 		end
 	end
 
+	if #customProviderOrder > 0 then
+		local hasAnyEntries = false
+		for _, key in ipairs(customProviderOrder) do
+			if customProviders[key] and #customProviders[key].entries > 0 then
+				hasAnyEntries = true;
+				break;
+			end
+		end
+
+		if hasAnyEntries then
+			rootDescription:CreateDivider();
+			local customButton = rootDescription:CreateButton("Custom");
+
+			for _, addonKey in ipairs(customProviderOrder) do
+				local provider = customProviders[addonKey];
+				if provider and #provider.entries > 0 then
+					local addonButton = customButton:CreateButton(provider.displayName);
+					for _, entry in ipairs(provider.entries) do
+						addonButton:CreateRadio(entry.label, isEntrySelected, applyEntry, entry.data);
+					end
+				end
+			end
+		end
+	end
+
 	rootDescription:CreateDivider()
 	rootDescription:CreateButton("Reset to Default", function()
 		talentArt.resetBackground()
@@ -563,3 +616,45 @@ end
 
 EventRegistry:RegisterCallback('PlayerSpellsFrame.TalentTab.Show', talentArt.TalentFrameEventFrame)
 EventRegistry:RegisterCallback('Settings.CategoryChanged', talentArt.SettingsPanelEventFrame)
+
+TalentArt_API = {
+	RegisterCustomProvider = RegisterCustomProvider,
+	RegisterCustomEntry = RegisterCustomEntry,
+
+	RefreshDropdown = function()
+		Dropdown:GenerateMenu();
+	end,
+};
+
+--[[
+	--Public API
+	--Other addons can use TalentArt_API to inject custom art options into the art selection dropdown
+	
+	--Example usage (place in your own addon, ideally in an ADDON_LOADED handler):
+	
+	-- Register your addon as a provider (do this once)
+	TalentArt_API.RegisterCustomProvider("MyAddonKey", "My Addon Name");
+
+	-- Register individual art entries (atlas-based)
+	TalentArt_API.RegisterCustomEntry("MyAddonKey", "Some Cool Background",
+		{ atlas = "talent-background-nightelf" } );
+
+	-- or register texture-based entries (background + right overlay at minimum)
+	TalentArt_API.RegisterCustomEntry("MyAddonKey", "Cool Texture Name",
+		{ background = "Interface\\AddOns\\MyAddon\\Textures\\bg.blp",
+		  right = "Interface\\AddOns\\MyAddon\\Textures\\right.blp",
+		  flash = "Interface\\AddOns\\MyAddon\\Textures\\flash.blp",  -- optional
+		  mid = "Interface\\AddOns\\MyAddon\\Textures\\mid.blp" } );  -- optional
+	-- all textures - background, right, flash, and mid - typically are the same file
+	
+	--the "Custom" top-level button and your addon's sub-menu appear automatically
+
+	--a test example, uncomment to test :^)
+
+	TalentArt_API.RegisterCustomProvider("TalentArt_Cool", "Funni Talent Art Example");
+	TalentArt_API.RegisterCustomEntry("TalentArt_Cool", "Crazy Texture Name",
+				{ background = "Interface\\AddOns\\TalentArt\\Media\\temp_old\\DHHavoc.blp",
+				  right = "Interface\\AddOns\\TalentArt\\Media\\temp_old\\DHHavoc.blp",
+				  flash = "Interface\\AddOns\\TalentArt\\Media\\temp_old\\DHHavoc.blp",
+				  mid = "Interface\\AddOns\\TalentArt\\Media\\temp_old\\DHHavoc.blp" } );
+--]]
