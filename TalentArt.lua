@@ -76,11 +76,18 @@ TalentArtPanel.Preview.Right.mask:SetAllPoints(TalentArtPanel.Preview.Right.texR
 TalentArtPanel.Preview.Right.texRight:AddMaskTexture(TalentArtPanel.Preview.Right.mask)
 
 function talentArt.getCurrentKey()
+	local specID = GetSpecializationInfo(GetSpecialization())
+	
+	if TalentArt_DB and TalentArt_DB.UseSpecWideArt then
+		return specID;
+	end
+
 	local configID = C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())
 	if configID ~= nil then
 		return configID
 	end
-	return GetSpecializationInfo(GetSpecialization())
+
+	return specID;
 end
 
 function talentArt.specChecker()
@@ -121,13 +128,30 @@ TalentArtPanel.Preview:SetScript("OnShow", function()
 	local bgC = colors.bg 
 	local rightC = colors.right 
 	
-	if C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID()) == nil then
-		TalentArtPanel.specName:SetText(L["CurrentConfig"] .. L["NoConfig"] )
+	if TalentArt_DB and TalentArt_DB.UseSpecWideArt then
+		local _, specName = GetSpecializationInfo(GetSpecialization());
+		TalentArtPanel.specName:SetText(L["CurrentConfig"] .. (specName or "Spec-Wide"));
+	elseif C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID()) == nil then
+		TalentArtPanel.specName:SetText(L["CurrentConfig"] .. L["NoConfig"] );
 	else
-		TalentArtPanel.specName:SetText(L["CurrentConfig"] .. C_Traits.GetConfigInfo(C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())).name )
+		TalentArtPanel.specName:SetText(L["CurrentConfig"] .. C_Traits.GetConfigInfo(C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())).name );
 	end
 	
 	local atlasToSet, bgTexToSet, rightTexToSet
+	local class, classIndex = UnitClassBase("player")
+
+	if TalentArt_DB and TalentArt_DB[key] then
+		local entry = TalentArt_DB[key];
+		atlasToSet = entry.atlas;
+		bgTexToSet = entry.background;
+		rightTexToSet = entry.right;
+	else
+		for k, v in pairs(TalentArt.defaultTextures[class]) do
+			if k == GetSpecialization() then
+				atlasToSet = v;
+			end
+		end
+	end
 	
 	if (TalentArt_DB == nil) or (TalentArt_DB[C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())] == nil) then
 		local class, classIndex = UnitClassBase("player")
@@ -330,6 +354,28 @@ function TalentArtPanel:InitializeOptions(event, arg1)
 			talentArt.eventDelay()
 		end)
 
+		local specWideLabel = TalentArtPanel.scrollChild:CreateFontString("ARTWORK", nil, "GameFontNormal")
+		specWideLabel:SetPoint("TOPLEFT", 10, startY - 35)
+		specWideLabel:SetText("Apply Art Spec-Wide (Ignore Loadout)")
+
+		local specWideCheckbox = CreateFrame("CheckButton", nil, TalentArtPanel.scrollChild, "UICheckButtonTemplate")
+		specWideCheckbox:SetPoint("LEFT", specWideLabel, "RIGHT", 10, 0)
+		
+		specWideCheckbox:SetScript("OnShow", function(self)
+			local isChecked = TalentArt_DB and TalentArt_DB.UseSpecWideArt or false;
+			self:SetChecked(isChecked);
+		end)
+
+		specWideCheckbox:SetScript("OnClick", function(self)
+			local isChecked = self:GetChecked()
+			
+			if TalentArt_DB then
+				TalentArt_DB.UseSpecWideArt = isChecked;
+			end
+			
+			talentArt.eventDelay();
+		end)
+
 	end
 end
 
@@ -393,56 +439,25 @@ function talentArt.doStuff()
 		end
 	end
 
-	if ((TalentArt_DB == nil) or (TalentArt_DB[bingus] == nil)) and talentArt.specChecker() == false then
-		--(TalentArt_DB[specID] ~= nil)
+	if TalentArt_DB and TalentArt_DB[key] then
+		applyFrameEntry(TalentArt_DB[key]);
+	else
 		for k, v in pairs(TalentArt.defaultTextures[class]) do
 			if k == GetSpecialization() then
-				--print("DEBUG class 1: " .. class)
-				--print("DEBUG texture 1: " .. TalentArt.defaultTextures[class][k])
-				PlayerSpellsFrame.TalentsFrame.Background:SetAtlas(TalentArt.defaultTextures[class][k])
-				PlayerSpellsFrame.TalentsFrame.OverlayBackgroundRight:SetAtlas(TalentArt.defaultTextures[class][k])
-				PlayerSpellsFrame.TalentsFrame.BackgroundFlash:SetAtlas(TalentArt.defaultTextures[class][k])
-				PlayerSpellsFrame.TalentsFrame.OverlayBackgroundMid:SetAtlas(TalentArt.defaultTextures[class][k])
+				PlayerSpellsFrame.TalentsFrame.Background:SetAtlas(TalentArt.defaultTextures[class][k]);
+				PlayerSpellsFrame.TalentsFrame.OverlayBackgroundRight:SetAtlas(TalentArt.defaultTextures[class][k]);
+				PlayerSpellsFrame.TalentsFrame.BackgroundFlash:SetAtlas(TalentArt.defaultTextures[class][k]);
+				PlayerSpellsFrame.TalentsFrame.OverlayBackgroundMid:SetAtlas(TalentArt.defaultTextures[class][k]);
 
-				PlayerSpellsFrame.TalentsFrame.Background:SetVertexColor(colors.bg.r, colors.bg.g, colors.bg.b, colors.bg.a)
-				PlayerSpellsFrame.TalentsFrame.OverlayBackgroundRight:SetVertexColor(colors.right.r, colors.right.g, colors.right.b)
-				--PlayerSpellsFrame.TalentsFrame.BackgroundFlash:SetVertexColor(colors.flash.r, colors.flash.g, colors.flash.b, colors.flash.a)
-				PlayerSpellsFrame.TalentsFrame.OverlayBackgroundMid:SetVertexColor(colors.right.r, colors.right.g, colors.right.b)
+				PlayerSpellsFrame.TalentsFrame.Background:SetVertexColor(colors.bg.r, colors.bg.g, colors.bg.b, colors.bg.a);
+				PlayerSpellsFrame.TalentsFrame.OverlayBackgroundRight:SetVertexColor(colors.right.r, colors.right.g, colors.right.b);
+				PlayerSpellsFrame.TalentsFrame.OverlayBackgroundMid:SetVertexColor(colors.right.r, colors.right.g, colors.right.b);
 				
-				PlayerSpellsFrame.TalentsFrame.Background:SetDesaturated(isDesat)
-				PlayerSpellsFrame.TalentsFrame.OverlayBackgroundRight:SetDesaturated(isDesat)
-				PlayerSpellsFrame.TalentsFrame.BackgroundFlash:SetDesaturated(isDesat)
-				PlayerSpellsFrame.TalentsFrame.OverlayBackgroundMid:SetDesaturated(isDesat)
+				PlayerSpellsFrame.TalentsFrame.Background:SetDesaturated(isDesat);
+				PlayerSpellsFrame.TalentsFrame.OverlayBackgroundRight:SetDesaturated(isDesat);
+				PlayerSpellsFrame.TalentsFrame.BackgroundFlash:SetDesaturated(isDesat);
+				PlayerSpellsFrame.TalentsFrame.OverlayBackgroundMid:SetDesaturated(isDesat);
 			end
-		end
-	else
-		if TalentArt_DB[talentArt.specChecker(specID)] ~= nil and talentArt.specChecker() ~= false then
-			applyFrameEntry(TalentArt_DB[talentArt.specChecker(specID)])
-		else
-			for k, v in pairs(TalentArt.defaultTextures[class]) do
-				if k == GetSpecialization() then
-					--print("DEBUG class 2: " .. class)
-					--print("DEBUG texture 2: " .. TalentArt.defaultTextures[class][k])
-					PlayerSpellsFrame.TalentsFrame.Background:SetAtlas(TalentArt.defaultTextures[class][k])
-					PlayerSpellsFrame.TalentsFrame.OverlayBackgroundRight:SetAtlas(TalentArt.defaultTextures[class][k])
-					PlayerSpellsFrame.TalentsFrame.BackgroundFlash:SetAtlas(TalentArt.defaultTextures[class][k])
-					PlayerSpellsFrame.TalentsFrame.OverlayBackgroundMid:SetAtlas(TalentArt.defaultTextures[class][k])
-
-					PlayerSpellsFrame.TalentsFrame.Background:SetVertexColor(colors.bg.r, colors.bg.g, colors.bg.b, colors.bg.a)
-					PlayerSpellsFrame.TalentsFrame.OverlayBackgroundRight:SetVertexColor(colors.right.r, colors.right.g, colors.right.b)
-					--PlayerSpellsFrame.TalentsFrame.BackgroundFlash:SetVertexColor(colors.flash.r, colors.flash.g, colors.flash.b, colors.flash.a)
-					PlayerSpellsFrame.TalentsFrame.OverlayBackgroundMid:SetVertexColor(colors.right.r, colors.right.g, colors.right.b)
-					
-					PlayerSpellsFrame.TalentsFrame.Background:SetDesaturated(isDesat)
-					PlayerSpellsFrame.TalentsFrame.OverlayBackgroundRight:SetDesaturated(isDesat)
-					PlayerSpellsFrame.TalentsFrame.BackgroundFlash:SetDesaturated(isDesat)
-					PlayerSpellsFrame.TalentsFrame.OverlayBackgroundMid:SetDesaturated(isDesat)
-				end
-			end
-		end
-		if bingus ~= nil then
-			--print("DEBUG class 3: " .. class)
-			applyFrameEntry(TalentArt_DB[bingus])
 		end
 	end
 end
