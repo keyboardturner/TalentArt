@@ -1,3 +1,16 @@
+# 1.0.0
+
+Major rework to some of the internal data and efficiency
+ - migrated dropdown data and made dropdown iterate over existing assets table
+ - reorganized assets table
+ - reworked some of how the Localization key was made/ordered
+
+Added color picker and Desaturation options
+
+Added option to set the art spec-wide and ignore config loadouts
+
+Added a public API to allow other addons to add custom textures
+
 # 0.3.0
 
 12.0.1 toc update
