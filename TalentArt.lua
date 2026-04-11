@@ -130,7 +130,7 @@ function talentArt.UpdatePreview()
 	
 	if TalentArt_DB and TalentArt_DB.UseSpecWideArt then
 		local _, specName = GetSpecializationInfo(GetSpecialization());
-		TalentArtPanel.specName:SetText(L["CurrentConfig"] .. (specName or "Spec-Wide"));
+		TalentArtPanel.specName:SetText(L["CurrentConfig"] .. (specName or L["SpecWide"]));
 	elseif C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID()) == nil then
 		TalentArtPanel.specName:SetText(L["CurrentConfig"] .. L["NoConfig"] );
 	else
@@ -229,8 +229,8 @@ function TalentArtPanel:InitializeOptions(event, arg1)
 		]]
 
 		local layers = {
-			{ key = "bg", name = "Background Color" },
-			{ key = "right", name = "Right Overlay Color", noAlpha = true }
+			{ key = "bg", name = L["BackgroundColor"] },
+			{ key = "right", name = L["RightOverlayColor"], noAlpha = true }
 		}
 
 		TalentArtPanel.swatches = {}
@@ -279,8 +279,8 @@ function TalentArtPanel:InitializeOptions(event, arg1)
 			swatch:SetScript("OnEnter", function(self)
 				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 				GameTooltip:SetText(layerConfig.name)
-				GameTooltip:AddLine("Left Click: Open color picker", 1, 1, 1)
-				GameTooltip:AddLine("Right Click: Open dropdown", 1, 1, 1)
+				GameTooltip:AddLine(L["LC_OpenColorPicker"], 1, 1, 1)
+				GameTooltip:AddLine(L["RC_OpenDropdown"], 1, 1, 1)
 				GameTooltip:Show()
 			end)
 			swatch:SetScript("OnLeave", GameTooltip_Hide)
@@ -288,14 +288,14 @@ function TalentArtPanel:InitializeOptions(event, arg1)
 			swatch:SetScript("OnClick", function(_, button)
 				if button == "RightButton" then
 					MenuUtil.CreateContextMenu(swatch, function(owner, rootDescription)
-						rootDescription:CreateTitle("Color Options")
+						rootDescription:CreateTitle(L["ColorOptions"])
 
-						rootDescription:CreateButton("Copy Color", function()
+						rootDescription:CreateButton(L["CopyColor"], function()
 							local currentColors = talentArt.GetCurrentColors()
 							talentArt.ColorClipboard = CopyTable(currentColors[layerConfig.key])
 						end)
 
-						local pasteBtn = rootDescription:CreateButton("Paste Color", function()
+						local pasteBtn = rootDescription:CreateButton(L["PasteColor"], function()
 							if not talentArt.ColorClipboard then return end
 							ApplyColor(CopyTable(talentArt.ColorClipboard))
 						end)
@@ -331,7 +331,7 @@ function TalentArtPanel:InitializeOptions(event, arg1)
 
 		local desatLabel = TalentArtPanel.scrollChild:CreateFontString("ARTWORK", nil, "GameFontNormal")
 		desatLabel:SetPoint("TOPLEFT", 10, startY - 5)
-		desatLabel:SetText("Desaturate Art")
+		desatLabel:SetText(L["DesaturateArt"])
 
 		local desatCheckbox = CreateFrame("CheckButton", nil, TalentArtPanel.scrollChild, "UICheckButtonTemplate")
 		desatCheckbox:SetPoint("LEFT", desatLabel, "RIGHT", 10, 0)
@@ -358,7 +358,7 @@ function TalentArtPanel:InitializeOptions(event, arg1)
 
 		local specWideLabel = TalentArtPanel.scrollChild:CreateFontString("ARTWORK", nil, "GameFontNormal")
 		specWideLabel:SetPoint("TOPLEFT", 10, startY - 35)
-		specWideLabel:SetText("Apply Art Spec-Wide (Ignore Loadout)")
+		specWideLabel:SetText(L["ApplySpecWide"])
 
 		local specWideCheckbox = CreateFrame("CheckButton", nil, TalentArtPanel.scrollChild, "UICheckButtonTemplate")
 		specWideCheckbox:SetPoint("LEFT", specWideLabel, "RIGHT", 10, 0)
@@ -529,7 +529,7 @@ EventRegistry:RegisterCallback('PlayerSpellsFrame.OpenFrame', talentArt.doStuff)
 
 --New 11.0.0 Menu API change
 local Dropdown = CreateFrame("DropdownButton", nil, TalentArtPanel, "WowStyle1DropdownTemplate")
-Dropdown:OverrideText("Art Selection")
+Dropdown:OverrideText(L["ArtSelect"])
 Dropdown:SetPoint("TOPLEFT", 0, -50);
 Dropdown:SetSize(150,30)
 
@@ -587,7 +587,7 @@ Dropdown:SetupMenu(function(dropdown, rootDescription)
 
 		if hasAnyEntries then
 			rootDescription:CreateDivider();
-			local customButton = rootDescription:CreateButton("Custom");
+			local customButton = rootDescription:CreateButton(L["Custom"]);
 
 			for _, addonKey in ipairs(customProviderOrder) do
 				local provider = customProviders[addonKey];
@@ -602,7 +602,7 @@ Dropdown:SetupMenu(function(dropdown, rootDescription)
 	end
 
 	rootDescription:CreateDivider()
-	rootDescription:CreateButton("Reset to Default", function()
+	rootDescription:CreateButton(L["ResetToDefault"], function()
 		talentArt.resetBackground()
 		Dropdown:GenerateMenu()
 	end)
