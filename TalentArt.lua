@@ -120,7 +120,7 @@ function talentArt.GetCurrentColors()
 	return defaultColors
 end
 
-TalentArtPanel.Preview:SetScript("OnShow", function()
+function talentArt.UpdatePreview()
 	local colors = talentArt.GetCurrentColors()
 	local key = talentArt.getCurrentKey()
 	local isDesat = TalentArt_DB and TalentArt_DB.Desaturation and TalentArt_DB.Desaturation[key] or false
@@ -189,7 +189,9 @@ TalentArtPanel.Preview:SetScript("OnShow", function()
 	
 	TalentArtPanel.Preview.tex:SetDesaturated(isDesat)
 	TalentArtPanel.Preview.Right.texRight:SetDesaturated(isDesat)
-end)
+end
+
+TalentArtPanel.Preview:SetScript("OnShow", talentArt.UpdatePreview)
 
 function TalentArtPanel:InitializeOptions(event, arg1)
 	if event == "ADDON_LOADED" and arg1 == "TalentArt" then
@@ -373,6 +375,7 @@ function TalentArtPanel:InitializeOptions(event, arg1)
 				TalentArt_DB.UseSpecWideArt = isChecked;
 			end
 			
+			talentArt.UpdatePreview();
 			talentArt.eventDelay();
 		end)
 
@@ -422,6 +425,7 @@ function talentArt.doStuff()
 	if PlayerSpellsFrame.TalentsFrame == nil then
 		return
 	end
+	PlayerSpellsFrame:SetClampedToScreen(true);
 	
 	local specID = GetSpecializationInfo(GetSpecialization())
 	local bingus = C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())
