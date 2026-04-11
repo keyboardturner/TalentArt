@@ -3,13 +3,17 @@
 Major rework to some of the internal data and efficiency
  - migrated dropdown data and made dropdown iterate over existing assets table
  - reorganized assets table
- - reworked some of how the Localization key was made/ordered
+ - reworked some of how the Localization key was made/ordered, adjusted/added more proper localization
 
 Added color picker and Desaturation options
 
 Added option to set the art spec-wide and ignore config loadouts
 
-Added a public API to allow other addons to add custom textures
+Added options to select other default spec backgrounds (Blizzard defaults)
+
+Added a public API to allow other addons to add custom textures (see documentation at the bottom of TalentArt.lua)
+
+Made it so that the spellbook/talent frame can't be dragged off the screen (even though my addon isn't the one that does this, figure i'll shove it in anyway because *somebody* isn't keeping it on the screen)
 
 # 0.3.0
 
