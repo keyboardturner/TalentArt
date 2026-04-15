@@ -425,7 +425,9 @@ function talentArt.doStuff()
 	if PlayerSpellsFrame.TalentsFrame == nil then
 		return
 	end
-	PlayerSpellsFrame:SetClampedToScreen(true);
+	if not UnitAffectingCombat("player") then
+		PlayerSpellsFrame:SetClampedToScreen(true);
+	end
 	
 	local specID = GetSpecializationInfo(GetSpecialization())
 	local bingus = C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())
