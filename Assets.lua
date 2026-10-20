@@ -1064,3 +1064,29 @@ TalentArt.defaultTextures = {
 		[3] = "talents-background-warlock-destruction",
 	},
 };
+
+TalentArt.ForeverDefaultTextures = {
+	WARRIOR = "talent-background-warrior",
+	PALADIN = "talent-background-paladin",
+	HUNTER = "talent-background-hunter",
+	SHAMAN = "talent-background-shaman",
+	DRUID = "talent-background-druid",
+	ROGUE = "talent-background-rogue",
+	PRIEST = "talent-background-priest",
+	MAGE = "talent-background-mage",
+	WARLOCK = "talent-background-warlock",
+};
+
+if WOW_PROJECT_ID == WOW_PROJECT_CAMELOT then
+	TalentArt.talentTextures.Default = {
+		{ className = L["Warrior"], atlas = TalentArt.ForeverDefaultTextures.WARRIOR },
+		{ className = L["Paladin"], atlas = TalentArt.ForeverDefaultTextures.PALADIN },
+		{ className = L["Hunter"],  atlas = TalentArt.ForeverDefaultTextures.HUNTER },
+		{ className = L["Rogue"],   atlas = TalentArt.ForeverDefaultTextures.ROGUE },
+		{ className = L["Priest"],  atlas = TalentArt.ForeverDefaultTextures.PRIEST },
+		{ className = L["Shaman"],  atlas = TalentArt.ForeverDefaultTextures.SHAMAN },
+		{ className = L["Mage"],    atlas = TalentArt.ForeverDefaultTextures.MAGE },
+		{ className = L["Warlock"], atlas = TalentArt.ForeverDefaultTextures.WARLOCK },
+		{ className = L["Druid"],   atlas = TalentArt.ForeverDefaultTextures.DRUID },
+	};
+end
